@@ -1,0 +1,76 @@
+
+  Declaration: 
+ class Parser ; 
+
+  FuncDef: 
+ virtual ~ IBuilder ( ) { 
+
+  Function IBuilder, lines = 1 , startLine = 7 , endLine = 7 , complexity = 1
+
+  Declaration: 
+ virtual Parser * Build ( ) = 0 ; 
+
+  Executable: 
+ virtual Parser * Build ( ) = 0 ; 
+
+  FuncDef: 
+ virtual ~ IAction ( ) { 
+
+  Function IAction, lines = 1 , startLine = 18 , endLine = 18 , complexity = 1
+
+  Declaration: 
+ virtual void doAction ( ITokCollection * & pTc ) = 0 ; 
+
+  Executable: 
+ virtual void doAction ( ITokCollection * & pTc ) = 0 ; 
+
+  FuncDef: 
+ virtual ~ IRule ( ) { 
+
+  Function IRule, lines = 1 , startLine = 29 , endLine = 29 , complexity = 1
+
+  Declaration: 
+ void addAction ( IAction * pAction ) ; 
+
+  Declaration: 
+ void doActions ( ITokCollection * & pTc ) ; 
+
+  Declaration: 
+ virtual bool doTest ( ITokCollection * & pTc ) = 0 ; 
+
+  Executable: 
+ virtual bool doTest ( ITokCollection * & pTc ) = 0 ; 
+
+  Declaration: 
+ std : : vector < IAction * > actions ; 
+
+  Executable: 
+ Parser ( ITokCollection * pTokCollection ) ; 
+
+  Declaration: 
+ ~ Parser ( ) ; 
+
+  Declaration: 
+ void addRule ( IRule * pRule ) ; 
+
+  Declaration: 
+ bool parse ( ) ; 
+
+  Declaration: 
+ bool next ( ) ; 
+
+  Declaration: 
+ ITokCollection * pTokColl ; 
+
+  Declaration: 
+ std : : vector < IRule * > rules ; 
+
+  FuncDef: 
+ inline Parser : : Parser ( ITokCollection * pTokCollection ) : pTokColl ( pTokCollection ) { 
+
+  Function Parser, lines = 1 , startLine = 50 , endLine = 50 , complexity = 1
+
+  FuncDef: 
+ inline Parser : : ~ Parser ( ) { 
+
+  Function Parser, lines = 1 , startLine = 52 , endLine = 52 , complexity = 1

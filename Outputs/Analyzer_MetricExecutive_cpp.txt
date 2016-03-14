@@ -1,0 +1,384 @@
+
+  FuncDef: 
+ # include "MetricExecutive.h" 
+
+  FuncDef: 
+ # include < conio . h > 
+
+  FuncDef: 
+ # include < string > 
+
+  FuncDef: 
+ # include "..\\FileMgr\FileMgr.h" 
+
+  FuncDef: 
+ # include "..\\FileMgr\FileSystem.h" 
+
+  Declaration: 
+ using SH = Utilities :: StringHelper ; 
+
+  Declaration: 
+ size _ t MetricExecutive :: totalFComplexity = 0 ; 
+
+  Executable: 
+ size _ t MetricExecutive :: totalFComplexity = 0 ; 
+
+  Declaration: 
+ size _ t MetricExecutive :: totalFLines = 0 ; 
+
+  Executable: 
+ size _ t MetricExecutive :: totalFLines = 0 ; 
+
+  Declaration: 
+ size _ t MetricExecutive :: totalLines = 0 ; 
+
+  Executable: 
+ size _ t MetricExecutive :: totalLines = 0 ; 
+
+  Declaration: 
+ size _ t MetricExecutive :: maxFLines = 0 ; 
+
+  Executable: 
+ size _ t MetricExecutive :: maxFLines = 0 ; 
+
+  Declaration: 
+ size _ t MetricExecutive :: maxFComplexity = 0 ; 
+
+  Executable: 
+ size _ t MetricExecutive :: maxFComplexity = 0 ; 
+
+  FuncDef: 
+ size _ t MetricExecutive :: getTotalFComplexity ( ) { 
+
+  Executable: 
+ return totalFComplexity ; 
+
+  Function getTotalFComplexity, lines = 3 , startLine = 25 , endLine = 27 , complexity = 1
+
+  FuncDef: 
+ size _ t MetricExecutive :: getTotalFLines ( ) { 
+
+  Executable: 
+ return totalFLines ; 
+
+  Function getTotalFLines, lines = 3 , startLine = 30 , endLine = 32 , complexity = 1
+
+  FuncDef: 
+ size _ t MetricExecutive :: getMaxFComplexity ( ) { 
+
+  Executable: 
+ return maxFComplexity ; 
+
+  Function getMaxFComplexity, lines = 3 , startLine = 35 , endLine = 37 , complexity = 1
+
+  FuncDef: 
+ size _ t MetricExecutive :: getMaxFLines ( ) { 
+
+  Executable: 
+ return maxFLines ; 
+
+  Function getMaxFLines, lines = 3 , startLine = 40 , endLine = 42 , complexity = 1
+
+  FuncDef: 
+ size _ t MetricExecutive :: getTotalLines ( ) { 
+
+  Executable: 
+ return totalLines ; 
+
+  Function getTotalLines, lines = 3 , startLine = 45 , endLine = 47 , complexity = 1
+
+  FuncDef: 
+ double MetricExecutive :: getCPL ( ) { 
+
+  Executable: 
+ return CPL ; 
+
+  Function getCPL, lines = 3 , startLine = 50 , endLine = 52 , complexity = 1
+
+  FuncDef: 
+ void MetricExecutive :: addAnalyzer ( std :: string fileSpec , MetricAnalyzer * analyzer ) { 
+
+  Declaration: 
+ analyzers . insert ( std :: make _ pair ( fileSpec , analyzer ) ) ; 
+
+  Executable: 
+ analyzers . insert ( std :: make _ pair ( fileSpec , analyzer ) ) ; 
+
+  Function addAnalyzer, lines = 3 , startLine = 55 , endLine = 57 , complexity = 1
+
+  FuncDef: 
+ void MetricExecutive :: analyzeCode ( ) { 
+
+  Declaration: 
+ std :: map < std :: string , MetricAnalyzer * > :: iterator it ; 
+
+  Executable: 
+ std :: map < std :: string , MetricAnalyzer * > :: iterator it ; 
+
+  Declaration: 
+ totalFComplexity += it - > second - > getTotalFComplexity ( ) ; 
+
+  Executable: 
+ totalFComplexity += it - > second - > getTotalFComplexity ( ) ; 
+
+  Declaration: 
+ totalFLines += it - > second - > getTotalFLines ( ) ; 
+
+  Executable: 
+ totalFLines += it - > second - > getTotalFLines ( ) ; 
+
+  Declaration: 
+ totalLines += it - > second - > getTotalLines ( ) ; 
+
+  Executable: 
+ totalLines += it - > second - > getTotalLines ( ) ; 
+
+  Declaration: 
+ if ( maxFLines < it - > second - > getMaxFLines ( ) ) maxFLines = it - > second - > getMaxFLines ( ) ; 
+
+  Executable: 
+ if ( maxFLines < it - > second - > getMaxFLines ( ) ) maxFLines = it - > second - > getMaxFLines ( ) ; 
+
+  Declaration: 
+ if ( maxFComplexity < it - > second - > getMaxFComplexity ( ) ) maxFComplexity = it - > second - > getMaxFComplexity ( ) ; 
+
+  Executable: 
+ if ( maxFComplexity < it - > second - > getMaxFComplexity ( ) ) maxFComplexity = it - > second - > getMaxFComplexity ( ) ; 
+
+  Declaration: 
+ std :: set < std :: tuple < size _ t , size _ t , std :: string >> ff = it - > second - > getFaultyFunction ( ) ; 
+
+  Executable: 
+ std :: set < std :: tuple < size _ t , size _ t , std :: string >> ff = it - > second - > getFaultyFunction ( ) ; 
+
+  Declaration: 
+ std :: set < std :: tuple < size _ t , size _ t , std :: string >> :: iterator sit ; 
+
+  Executable: 
+ std :: set < std :: tuple < size _ t , size _ t , std :: string >> :: iterator sit ; 
+
+  Declaration: 
+ std :: stringstream ss ; 
+
+  Declaration: 
+ int t = static _ cast < int > ( std :: get < 0 > ( * sit ) ) ; 
+
+  Declaration: 
+ ss << std :: left << std :: setw ( 5 ) << std :: setfill ( ' ' ) << t ; 
+
+  Executable: 
+ ss << std :: left << std :: setw ( 5 ) << std :: setfill ( ' ' ) << t ; 
+
+  Executable: 
+ t = static _ cast < int > ( std :: get < 1 > ( * sit ) ) ; 
+
+  Declaration: 
+ ss << std :: left << std :: setw ( 5 ) << std :: setfill ( ' ' ) << t ; 
+
+  Executable: 
+ ss << std :: left << std :: setw ( 5 ) << std :: setfill ( ' ' ) << t ; 
+
+  Declaration: 
+ ss << std :: right << std :: setw ( 20 ) << std :: setfill ( ' ' ) << std :: get < 2 > ( * sit ) ; 
+
+  Executable: 
+ ss << std :: right << std :: setw ( 20 ) << std :: setfill ( ' ' ) << std :: get < 2 > ( * sit ) ; 
+
+  Declaration: 
+ ss << " : " << std :: left << std :: setw ( 26 ) << std :: setfill ( ' ' ) << it - > first ; 
+
+  Executable: 
+ ss << " : " << std :: left << std :: setw ( 26 ) << std :: setfill ( ' ' ) << it - > first ; 
+
+  Declaration: 
+ faultyFunctions . insert ( ss . str ( ) ) ; 
+
+  Executable: 
+ faultyFunctions . insert ( ss . str ( ) ) ; 
+
+  Executable: 
+ CPL = static _ cast < double > ( totalFComplexity ) / static _ cast < double > ( totalFLines ) ; 
+
+  Function analyzeCode, lines = 25 , startLine = 60 , endLine = 84 , complexity = 3
+
+  FuncDef: 
+ void MetricExecutive :: packageSummary ( ) { 
+
+  Declaration: 
+ SH :: title ( "Package Summary" ) ; 
+
+  Declaration: 
+ std :: cout << std :: endl ; 
+
+  Executable: 
+ std :: cout << std :: endl ; 
+
+  Declaration: 
+ std :: cout << std :: endl << std :: left << std :: setw ( 55 ) << std :: setfill ( '*' ) << "" ; 
+
+  Executable: 
+ std :: cout << std :: endl << std :: left << std :: setw ( 55 ) << std :: setfill ( '*' ) << "" ; 
+
+  Declaration: 
+ std :: cout << std :: endl << "* " << std :: left << std :: setw ( 37 ) << std :: setfill ( ' ' ) << " Total Cyclometic Complexity" << " : " << std :: left << std :: setw ( 11 ) << std :: setfill ( ' ' ) << getTotalFComplexity ( ) << " *" ; 
+
+  Executable: 
+ std :: cout << std :: endl << "* " << std :: left << std :: setw ( 37 ) << std :: setfill ( ' ' ) << " Total Cyclometic Complexity" << " : " << std :: left << std :: setw ( 11 ) << std :: setfill ( ' ' ) << getTotalFComplexity ( ) << " *" ; 
+
+  Declaration: 
+ std :: cout << std :: endl << "* " << std :: left << std :: setw ( 37 ) << std :: setfill ( ' ' ) << " Total Function Lines" << " : " << std :: left << std :: setw ( 11 ) << std :: setfill ( ' ' ) << getTotalFLines ( ) << " *" ; 
+
+  Executable: 
+ std :: cout << std :: endl << "* " << std :: left << std :: setw ( 37 ) << std :: setfill ( ' ' ) << " Total Function Lines" << " : " << std :: left << std :: setw ( 11 ) << std :: setfill ( ' ' ) << getTotalFLines ( ) << " *" ; 
+
+  Declaration: 
+ std :: cout << std :: endl << "* " << std :: left << std :: setw ( 37 ) << std :: setfill ( ' ' ) << " Max Cyclometic Complexity" << " : " << std :: left << std :: setw ( 11 ) << std :: setfill ( ' ' ) << getMaxFComplexity ( ) << " *" ; 
+
+  Executable: 
+ std :: cout << std :: endl << "* " << std :: left << std :: setw ( 37 ) << std :: setfill ( ' ' ) << " Max Cyclometic Complexity" << " : " << std :: left << std :: setw ( 11 ) << std :: setfill ( ' ' ) << getMaxFComplexity ( ) << " *" ; 
+
+  Declaration: 
+ std :: cout << std :: endl << "* " << std :: left << std :: setw ( 37 ) << std :: setfill ( ' ' ) << " Max Function Lines" << " : " << std :: left << std :: setw ( 11 ) << std :: setfill ( ' ' ) << getMaxFLines ( ) << " *" ; 
+
+  Executable: 
+ std :: cout << std :: endl << "* " << std :: left << std :: setw ( 37 ) << std :: setfill ( ' ' ) << " Max Function Lines" << " : " << std :: left << std :: setw ( 11 ) << std :: setfill ( ' ' ) << getMaxFLines ( ) << " *" ; 
+
+  Declaration: 
+ std :: cout << std :: endl << "* " << std :: left << std :: setw ( 37 ) << std :: setfill ( ' ' ) << " Total Lines" << " : " << std :: left << std :: setw ( 11 ) << std :: setfill ( ' ' ) << getTotalLines ( ) << " *" ; 
+
+  Executable: 
+ std :: cout << std :: endl << "* " << std :: left << std :: setw ( 37 ) << std :: setfill ( ' ' ) << " Total Lines" << " : " << std :: left << std :: setw ( 11 ) << std :: setfill ( ' ' ) << getTotalLines ( ) << " *" ; 
+
+  Declaration: 
+ std :: cout << std :: endl << "* " << std :: left << std :: setw ( 37 ) << std :: setfill ( ' ' ) << " Complexity Per Line" << " : " << std :: left << std :: setw ( 11 ) << std :: setfill ( ' ' ) << getCPL ( ) << " *" ; 
+
+  Executable: 
+ std :: cout << std :: endl << "* " << std :: left << std :: setw ( 37 ) << std :: setfill ( ' ' ) << " Complexity Per Line" << " : " << std :: left << std :: setw ( 11 ) << std :: setfill ( ' ' ) << getCPL ( ) << " *" ; 
+
+  Declaration: 
+ std :: cout << std :: endl << std :: left << std :: setw ( 55 ) << std :: setfill ( '*' ) << "" << std :: endl ; 
+
+  Executable: 
+ std :: cout << std :: endl << std :: left << std :: setw ( 55 ) << std :: setfill ( '*' ) << "" << std :: endl ; 
+
+  Declaration: 
+ std :: cout << std :: endl ; 
+
+  Executable: 
+ std :: cout << std :: endl ; 
+
+  Function packageSummary, lines = 19 , startLine = 87 , endLine = 105 , complexity = 1
+
+  FuncDef: 
+ void MetricExecutive :: showfaultyFunctions ( ) { 
+
+  Declaration: 
+ if ( faultyFunctions . size ( ) < = 0 ) std :: cout << std :: endl << "This Package doesn't have any functions exceeding lines or complexity. " ; 
+
+  Executable: 
+ if ( faultyFunctions . size ( ) < = 0 ) std :: cout << std :: endl << "This Package doesn't have any functions exceeding lines or complexity. " ; 
+
+  Declaration: 
+ SH :: title ( "Functions excedding CC or lines limits : " ) ; 
+
+  Declaration: 
+ std :: cout << std :: endl ; 
+
+  Executable: 
+ std :: cout << std :: endl ; 
+
+  Declaration: 
+ std :: cout << std :: endl << std :: left << std :: setw ( 65 ) << std :: setfill ( '*' ) << "" << std :: endl ; 
+
+  Executable: 
+ std :: cout << std :: endl << std :: left << std :: setw ( 65 ) << std :: setfill ( '*' ) << "" << std :: endl ; 
+
+  Declaration: 
+ std :: set < std :: string > :: iterator it ; 
+
+  Executable: 
+ std :: set < std :: string > :: iterator it ; 
+
+  Declaration: 
+ for ( it = faultyFunctions . begin ( ) ; it ! = faultyFunctions . end ( ) ; it ++ ) std :: cout << "* " << * it << " *" << std :: endl ; 
+
+  Executable: 
+ for ( it = faultyFunctions . begin ( ) ; it ! = faultyFunctions . end ( ) ; it ++ ) std :: cout << "* " << * it << " *" << std :: endl ; 
+
+  Declaration: 
+ std :: cout << std :: left << std :: setw ( 65 ) << std :: setfill ( '*' ) << "" << std :: endl ; 
+
+  Executable: 
+ std :: cout << std :: left << std :: setw ( 65 ) << std :: setfill ( '*' ) << "" << std :: endl ; 
+
+  Function showfaultyFunctions, lines = 13 , startLine = 108 , endLine = 120 , complexity = 2
+
+  FuncDef: 
+ void MetricExecutive :: Exceute ( std :: string dir , std :: string pattern ) { 
+
+  Declaration: 
+ std :: vector < std :: string > files = FileSystem :: Directory :: getFiles ( dir , pattern ) ; 
+
+  Declaration: 
+ MetricAnalyzer * analyzer = new MetricAnalyzer ( ) ; 
+
+  Executable: 
+ addAnalyzer ( files [ i ] , analyzer ) ; 
+
+  Declaration: 
+ analyzer - > Analyze ( dir + files [ i ] ) ; 
+
+  Executable: 
+ analyzer - > Analyze ( dir + files [ i ] ) ; 
+
+  Executable: 
+ analyzeCode ( ) ; 
+
+  Executable: 
+ packageSummary ( ) ; 
+
+  Executable: 
+ showfaultyFunctions ( ) ; 
+
+  Function Exceute, lines = 15 , startLine = 123 , endLine = 137 , complexity = 3
+
+  FuncDef: 
+ # ifdef TEST _ METRIC _ EXECUTIVE 
+
+  FuncDef: 
+ int main ( int argc , char * argv [ ] ) { 
+
+  Declaration: 
+ std :: string dir , pattern ; 
+
+  Executable: 
+ std :: string dir , pattern ; 
+
+  Declaration: 
+ SH :: getDirPattern ( argc , argv , dir , pattern ) ; 
+
+  Declaration: 
+ std :: cout << dir << "::" << pattern ; 
+
+  Executable: 
+ std :: cout << dir << "::" << pattern ; 
+
+  Declaration: 
+ MetricExecutive ME ; 
+
+  Declaration: 
+ ME . Exceute ( dir , pattern ) ; 
+
+  Executable: 
+ ME . Exceute ( dir , pattern ) ; 
+
+  Declaration: 
+ std :: cout << "\n" ; 
+
+  Executable: 
+ std :: cout << "\n" ; 
+
+  Function main, lines = 23 , startLine = 141 , endLine = 163 , complexity = 1
+
+  FuncDef: 
+ # endif 

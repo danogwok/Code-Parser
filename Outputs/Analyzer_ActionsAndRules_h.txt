@@ -1,0 +1,1570 @@
+
+  FuncDef: 
+ # ifndef ACTIONSANDRULES _ H 
+
+  FuncDef: 
+ # define ACTIONSANDRULES _ H 
+
+  FuncDef: 
+ # include < queue > 
+
+  FuncDef: 
+ # include < string > 
+
+  FuncDef: 
+ # include < sstream > 
+
+  FuncDef: 
+ # include "Parser.h" 
+
+  FuncDef: 
+ # include "AST.h" 
+
+  FuncDef: 
+ # include "../SemiExp/itokcollection.h" 
+
+  FuncDef: 
+ # include "../ScopeStack/ScopeStack.h" 
+
+  FuncDef: 
+ # include "../Tokenizer/Tokenizer.h" 
+
+  FuncDef: 
+ # include "../SemiExp/SemiExp.h" 
+
+  Declaration: 
+ ScopeStack < ASTNode * > stack ; 
+
+  Declaration: 
+ Scanner :: Toker * p _ Toker ; 
+
+  Executable: 
+ Scanner :: Toker * p _ Toker ; 
+
+  Declaration: 
+ static Repository * _ instance ; 
+
+  Executable: 
+ static Repository * _ instance ; 
+
+  Declaration: 
+ AST * _ ast = new AST ( ) ; 
+
+  Executable: 
+ AST * _ ast = new AST ( ) ; 
+
+  FuncDef: 
+ Repository ( Scanner :: Toker * pToker ) { 
+
+  Declaration: 
+ ASTNode * root = new ASTNode ( ) ; 
+
+  Declaration: 
+ root - > setType ( "namespace" ) ; 
+
+  Executable: 
+ root - > setType ( "namespace" ) ; 
+
+  Declaration: 
+ root - > setName ( "GNS" ) ; 
+
+  Executable: 
+ root - > setName ( "GNS" ) ; 
+
+  Declaration: 
+ root - > setLineStart ( 0 ) ; 
+
+  Executable: 
+ root - > setLineStart ( 0 ) ; 
+
+  Declaration: 
+ root - > setLineEnd ( 0 ) ; 
+
+  Executable: 
+ root - > setLineEnd ( 0 ) ; 
+
+  Declaration: 
+ root - > setLineCount ( 0 ) ; 
+
+  Executable: 
+ root - > setLineCount ( 0 ) ; 
+
+  Declaration: 
+ p _ Toker = pToker ; 
+
+  Executable: 
+ p _ Toker = pToker ; 
+
+  Declaration: 
+ _ ast - > setRoot ( root ) ; 
+
+  Executable: 
+ _ ast - > setRoot ( root ) ; 
+
+  Declaration: 
+ stack . push ( root ) ; 
+
+  Executable: 
+ stack . push ( root ) ; 
+
+  Declaration: 
+ _ instance = this ; 
+
+  Function Repository, lines = 12 , startLine = 95 , endLine = 106 , complexity = 1
+
+  FuncDef: 
+ static Repository * getInstance ( ) { 
+
+  Declaration: 
+ return _ instance ; 
+
+  Function getInstance, lines = 3 , startLine = 109 , endLine = 111 , complexity = 1
+
+  FuncDef: 
+ AST * getAST ( ) { 
+
+  Declaration: 
+ return _ ast ; 
+
+  Function getAST, lines = 3 , startLine = 114 , endLine = 116 , complexity = 1
+
+  FuncDef: 
+ ScopeStack < ASTNode * > & scopeStack ( ) { 
+
+  Executable: 
+ return stack ; 
+
+  Function scopeStack, lines = 3 , startLine = 119 , endLine = 121 , complexity = 1
+
+  FuncDef: 
+ Scanner :: Toker * Toker ( ) { 
+
+  Declaration: 
+ return p _ Toker ; 
+
+  Executable: 
+ return p _ Toker ; 
+
+  Function Toker, lines = 3 , startLine = 124 , endLine = 126 , complexity = 1
+
+  FuncDef: 
+ size _ t lineCount ( ) { 
+
+  Declaration: 
+ return ( size _ t ) ( p _ Toker - > currentLineCount ( ) ) ; 
+
+  Executable: 
+ return ( size _ t ) ( p _ Toker - > currentLineCount ( ) ) ; 
+
+  Function lineCount, lines = 3 , startLine = 129 , endLine = 131 , complexity = 1
+
+  FuncDef: 
+ bool doTest ( ITokCollection * & pTc ) { 
+
+  Executable: 
+ doActions ( pTc ) ; 
+
+  Executable: 
+ return true ; 
+
+  Executable: 
+ return true ; 
+
+  Function doTest, lines = 8 , startLine = 140 , endLine = 147 , complexity = 2
+
+  Declaration: 
+ Repository * p _ Repos ; 
+
+  Executable: 
+ Repository * p _ Repos ; 
+
+  FuncDef: 
+ HandlePush ( Repository * pRepos ) { 
+
+  Declaration: 
+ p _ Repos = pRepos ; 
+
+  Executable: 
+ p _ Repos = pRepos ; 
+
+  Function HandlePush, lines = 3 , startLine = 158 , endLine = 160 , complexity = 1
+
+  FuncDef: 
+ void doAction ( ITokCollection * & pTc ) { 
+
+  Declaration: 
+ ASTNode * elem = new ASTNode ( ) ; 
+
+  Declaration: 
+ elem - > setType ( "unknown" ) ; 
+
+  Executable: 
+ elem - > setType ( "unknown" ) ; 
+
+  Declaration: 
+ elem - > setName ( "anonymous" ) ; 
+
+  Executable: 
+ elem - > setName ( "anonymous" ) ; 
+
+  Declaration: 
+ elem - > setLineStart ( p _ Repos - > lineCount ( ) ) ; 
+
+  Executable: 
+ elem - > setLineStart ( p _ Repos - > lineCount ( ) ) ; 
+
+  Declaration: 
+ elem - > setLineCount ( p _ Repos - > lineCount ( ) ) ; 
+
+  Executable: 
+ elem - > setLineCount ( p _ Repos - > lineCount ( ) ) ; 
+
+  Declaration: 
+ p _ Repos - > scopeStack ( ) . top ( ) - > addChild ( elem ) ; 
+
+  Executable: 
+ p _ Repos - > scopeStack ( ) . top ( ) - > addChild ( elem ) ; 
+
+  Declaration: 
+ p _ Repos - > scopeStack ( ) . push ( elem ) ; 
+
+  Executable: 
+ p _ Repos - > scopeStack ( ) . push ( elem ) ; 
+
+  Function doAction, lines = 9 , startLine = 162 , endLine = 170 , complexity = 1
+
+  FuncDef: 
+ bool doTest ( ITokCollection * & pTc ) { 
+
+  Executable: 
+ doActions ( pTc ) ; 
+
+  Executable: 
+ return true ; 
+
+  Executable: 
+ return true ; 
+
+  Function doTest, lines = 8 , startLine = 180 , endLine = 187 , complexity = 2
+
+  Declaration: 
+ Repository * p _ Repos ; 
+
+  Executable: 
+ Repository * p _ Repos ; 
+
+  FuncDef: 
+ HandlePop ( Repository * pRepos ) { 
+
+  Declaration: 
+ p _ Repos = pRepos ; 
+
+  Executable: 
+ p _ Repos = pRepos ; 
+
+  Function HandlePop, lines = 3 , startLine = 198 , endLine = 200 , complexity = 1
+
+  FuncDef: 
+ void doAction ( ITokCollection * & pTc ) { 
+
+  Declaration: 
+ if ( p _ Repos - > scopeStack ( ) . size ( ) == 0 ) return ; 
+
+  Executable: 
+ if ( p _ Repos - > scopeStack ( ) . size ( ) == 0 ) return ; 
+
+  Declaration: 
+ ASTNode * elem = p _ Repos - > scopeStack ( ) . pop ( ) ; 
+
+  Declaration: 
+ elem - > setLineEnd ( p _ Repos - > lineCount ( ) ) ; 
+
+  Executable: 
+ elem - > setLineEnd ( p _ Repos - > lineCount ( ) ) ; 
+
+  Declaration: 
+ elem - > setLineCount ( elem - > getLineEnd ( ) - elem - > getLineStart ( ) + 1 ) ; 
+
+  Executable: 
+ elem - > setLineCount ( elem - > getLineEnd ( ) - elem - > getLineStart ( ) + 1 ) ; 
+
+  Declaration: 
+ elem - > setCC ( p _ Repos - > getAST ( ) - > getDescendantsSize ( elem ) ) ; 
+
+  Executable: 
+ elem - > setCC ( p _ Repos - > getAST ( ) - > getDescendantsSize ( elem ) ) ; 
+
+  Declaration: 
+ std :: cout << "\n  Function " << elem - > getName ( ) << ", lines = " << elem - > getLineCount ( ) << " , startLine = " << elem - > getLineStart ( ) << " , endLine = " << elem - > getLineEnd ( ) ; 
+
+  Executable: 
+ std :: cout << "\n  Function " << elem - > getName ( ) << ", lines = " << elem - > getLineCount ( ) << " , startLine = " << elem - > getLineStart ( ) << " , endLine = " << elem - > getLineEnd ( ) ; 
+
+  Declaration: 
+ std :: cout << " , complexity = " << elem - > getCC ( ) ; 
+
+  Executable: 
+ std :: cout << " , complexity = " << elem - > getCC ( ) ; 
+
+  Declaration: 
+ std :: cout << "\n" ; 
+
+  Executable: 
+ std :: cout << "\n" ; 
+
+  Declaration: 
+ if ( elem - > getType ( ) == "delete" ) p _ Repos - > getAST ( ) - > deleteChild ( elem ) ; 
+
+  Executable: 
+ if ( elem - > getType ( ) == "delete" ) p _ Repos - > getAST ( ) - > deleteChild ( elem ) ; 
+
+  Function doAction, lines = 16 , startLine = 202 , endLine = 217 , complexity = 2
+
+  FuncDef: 
+ bool doTest ( ITokCollection * & pTc ) { 
+
+  Executable: 
+ doActions ( pTc ) ; 
+
+  Executable: 
+ return true ; 
+
+  Executable: 
+ return true ; 
+
+  Function doTest, lines = 8 , startLine = 227 , endLine = 234 , complexity = 2
+
+  FuncDef: 
+ void doAction ( ITokCollection * & pTc ) { 
+
+  Declaration: 
+ std :: cout << "\n\n  Preproc Stmt: " << pTc - > show ( ) . c _ str ( ) ; 
+
+  Executable: 
+ std :: cout << "\n\n  Preproc Stmt: " << pTc - > show ( ) . c _ str ( ) ; 
+
+  Function doAction, lines = 3 , startLine = 244 , endLine = 246 , complexity = 1
+
+  FuncDef: 
+ bool isSpecialKeyWord ( const std :: string & tok ) { 
+
+  Declaration: 
+ const static std :: string keys [ ] = { 
+
+  Declaration: 
+ for ( int i = 0 ; i < 5 ; ++ i ) if ( tok == keys [ i ] ) return true ; 
+
+  Executable: 
+ for ( int i = 0 ; i < 5 ; ++ i ) if ( tok == keys [ i ] ) return true ; 
+
+  Executable: 
+ return false ; 
+
+  Function isSpecialKeyWord, lines = 8 , startLine = 257 , endLine = 264 , complexity = 1
+
+  FuncDef: 
+ bool doTest ( ITokCollection * & pTc ) { 
+
+  Declaration: 
+ ITokCollection & tc = * pTc ; 
+
+  Declaration: 
+ size _ t len = tc . find ( "(" ) ; 
+
+  Executable: 
+ size _ t len = tc . find ( "(" ) ; 
+
+  Executable: 
+ doActions ( pTc ) ; 
+
+  Executable: 
+ return true ; 
+
+  Executable: 
+ return true ; 
+
+  Function doTest, lines = 13 , startLine = 266 , endLine = 278 , complexity = 3
+
+  Declaration: 
+ Repository * p _ Repos ; 
+
+  Executable: 
+ Repository * p _ Repos ; 
+
+  FuncDef: 
+ PushFunction ( Repository * pRepos ) { 
+
+  Declaration: 
+ p _ Repos = pRepos ; 
+
+  Executable: 
+ p _ Repos = pRepos ; 
+
+  Function PushFunction, lines = 3 , startLine = 289 , endLine = 291 , complexity = 1
+
+  FuncDef: 
+ bool isLambda ( ITokCollection * & pTc ) { 
+
+  Declaration: 
+ if ( ( * pTc ) [ i ] == "]" ) if ( ( * pTc ) [ i + 1 ] == "(" ) return true ; 
+
+  Executable: 
+ if ( ( * pTc ) [ i ] == "]" ) if ( ( * pTc ) [ i + 1 ] == "(" ) return true ; 
+
+  Executable: 
+ return false ; 
+
+  Function isLambda, lines = 8 , startLine = 294 , endLine = 301 , complexity = 2
+
+  FuncDef: 
+ void doAction ( ITokCollection * & pTc ) { 
+
+  Declaration: 
+ ASTNode * node = p _ Repos - > scopeStack ( ) . top ( ) ; 
+
+  Declaration: 
+ p _ Repos - > scopeStack ( ) . pop ( ) ; 
+
+  Executable: 
+ p _ Repos - > scopeStack ( ) . pop ( ) ; 
+
+  Declaration: 
+ p _ Repos - > getAST ( ) - > deleteChild ( node ) ; 
+
+  Executable: 
+ p _ Repos - > getAST ( ) - > deleteChild ( node ) ; 
+
+  Declaration: 
+ std :: string name = ( * pTc ) [ pTc - > find ( "(" ) - 1 ] ; 
+
+  Declaration: 
+ ASTNode * elem = new ASTNode ( ) ; 
+
+  Declaration: 
+ elem - > setType ( "lambda" ) ; 
+
+  Executable: 
+ elem - > setType ( "lambda" ) ; 
+
+  Declaration: 
+ elem - > setName ( "anonymous" ) ; 
+
+  Executable: 
+ elem - > setName ( "anonymous" ) ; 
+
+  Declaration: 
+ elem - > setType ( "function" ) ; 
+
+  Executable: 
+ elem - > setType ( "function" ) ; 
+
+  Declaration: 
+ elem - > setName ( name ) ; 
+
+  Executable: 
+ elem - > setName ( name ) ; 
+
+  Declaration: 
+ elem - > setLineStart ( p _ Repos - > lineCount ( ) ) ; 
+
+  Executable: 
+ elem - > setLineStart ( p _ Repos - > lineCount ( ) ) ; 
+
+  Declaration: 
+ p _ Repos - > scopeStack ( ) . top ( ) - > addChild ( elem ) ; 
+
+  Executable: 
+ p _ Repos - > scopeStack ( ) . top ( ) - > addChild ( elem ) ; 
+
+  Declaration: 
+ p _ Repos - > scopeStack ( ) . push ( elem ) ; 
+
+  Executable: 
+ p _ Repos - > scopeStack ( ) . push ( elem ) ; 
+
+  Function doAction, lines = 18 , startLine = 303 , endLine = 320 , complexity = 3
+
+  FuncDef: 
+ bool isSpecialKeyWord ( const std :: string & tok ) { 
+
+  Declaration: 
+ const static std :: string keys [ ] = { 
+
+  Declaration: 
+ for ( int i = 0 ; i < 8 ; ++ i ) if ( keys [ i ] == tok ) return true ; 
+
+  Executable: 
+ for ( int i = 0 ; i < 8 ; ++ i ) if ( keys [ i ] == tok ) return true ; 
+
+  Executable: 
+ return false ; 
+
+  Function isSpecialKeyWord, lines = 8 , startLine = 331 , endLine = 338 , complexity = 1
+
+  FuncDef: 
+ bool doTest ( ITokCollection * & pTc ) { 
+
+  Declaration: 
+ ITokCollection & tc = * pTc ; 
+
+  Declaration: 
+ size _ t len = tc . find ( "(" ) ; 
+
+  Executable: 
+ size _ t len = tc . find ( "(" ) ; 
+
+  Executable: 
+ doActions ( pTc ) ; 
+
+  Executable: 
+ return true ; 
+
+  Executable: 
+ return true ; 
+
+  Function doTest, lines = 15 , startLine = 340 , endLine = 354 , complexity = 4
+
+  Declaration: 
+ Repository * p _ Repos ; 
+
+  Executable: 
+ Repository * p _ Repos ; 
+
+  FuncDef: 
+ PushControls ( Repository * pRepos ) { 
+
+  Declaration: 
+ p _ Repos = pRepos ; 
+
+  Executable: 
+ p _ Repos = pRepos ; 
+
+  Function PushControls, lines = 3 , startLine = 365 , endLine = 367 , complexity = 1
+
+  FuncDef: 
+ std :: string getName ( ITokCollection * & pTc ) { 
+
+  Declaration: 
+ size _ t controlIndex = pTc - > find ( "{" ) ; 
+
+  Executable: 
+ size _ t controlIndex = pTc - > find ( "{" ) ; 
+
+  Executable: 
+ controlIndex -- ; 
+
+  Declaration: 
+ while ( ( * pTc ) [ controlIndex ] == "\n" ) controlIndex -- ; 
+
+  Executable: 
+ while ( ( * pTc ) [ controlIndex ] == "\n" ) controlIndex -- ; 
+
+  Declaration: 
+ return ( * pTc ) [ controlIndex ] ; 
+
+  Executable: 
+ return ( * pTc ) [ controlIndex ] ; 
+
+  Function getName, lines = 7 , startLine = 369 , endLine = 375 , complexity = 1
+
+  FuncDef: 
+ void doAction ( ITokCollection * & pTc ) { 
+
+  Declaration: 
+ ASTNode * node = p _ Repos - > scopeStack ( ) . pop ( ) ; 
+
+  Declaration: 
+ p _ Repos - > getAST ( ) - > deleteChild ( node ) ; 
+
+  Executable: 
+ p _ Repos - > getAST ( ) - > deleteChild ( node ) ; 
+
+  Declaration: 
+ size _ t controlIndex = pTc - > find ( "(" ) ; 
+
+  Executable: 
+ size _ t controlIndex = pTc - > find ( "(" ) ; 
+
+  Declaration: 
+ std :: string name = controlIndex < pTc - > length ( ) ? ( * pTc ) [ controlIndex - 1 ] : getName ( pTc ) ; 
+
+  Declaration: 
+ ASTNode * elem = new ASTNode ( ) ; 
+
+  Declaration: 
+ elem - > setType ( "control" ) ; 
+
+  Executable: 
+ elem - > setType ( "control" ) ; 
+
+  Declaration: 
+ elem - > setName ( name ) ; 
+
+  Executable: 
+ elem - > setName ( name ) ; 
+
+  Declaration: 
+ elem - > setLineStart ( p _ Repos - > lineCount ( ) ) ; 
+
+  Executable: 
+ elem - > setLineStart ( p _ Repos - > lineCount ( ) ) ; 
+
+  Declaration: 
+ p _ Repos - > scopeStack ( ) . top ( ) - > addChild ( elem ) ; 
+
+  Executable: 
+ p _ Repos - > scopeStack ( ) . top ( ) - > addChild ( elem ) ; 
+
+  Declaration: 
+ p _ Repos - > scopeStack ( ) . push ( elem ) ; 
+
+  Executable: 
+ p _ Repos - > scopeStack ( ) . push ( elem ) ; 
+
+  Function doAction, lines = 12 , startLine = 377 , endLine = 388 , complexity = 1
+
+  Declaration: 
+ Repository * p _ Repos ; 
+
+  Executable: 
+ Repository * p _ Repos ; 
+
+  FuncDef: 
+ PrintFunction ( Repository * pRepos ) { 
+
+  Declaration: 
+ p _ Repos = pRepos ; 
+
+  Executable: 
+ p _ Repos = pRepos ; 
+
+  Function PrintFunction, lines = 3 , startLine = 402 , endLine = 404 , complexity = 1
+
+  FuncDef: 
+ void doAction ( ITokCollection * & pTc ) { 
+
+  Declaration: 
+ std :: cout << "\n  FuncDef: " << pTc - > show ( ) . c _ str ( ) ; 
+
+  Executable: 
+ std :: cout << "\n  FuncDef: " << pTc - > show ( ) . c _ str ( ) ; 
+
+  Function doAction, lines = 3 , startLine = 407 , endLine = 409 , complexity = 1
+
+  FuncDef: 
+ void doAction ( ITokCollection * & pTc ) { 
+
+  Declaration: 
+ pTc - > remove ( "public" ) ; 
+
+  Executable: 
+ pTc - > remove ( "public" ) ; 
+
+  Declaration: 
+ pTc - > remove ( ":" ) ; 
+
+  Executable: 
+ pTc - > remove ( ":" ) ; 
+
+  Declaration: 
+ pTc - > trimFront ( ) ; 
+
+  Executable: 
+ pTc - > trimFront ( ) ; 
+
+  Declaration: 
+ int len = pTc - > find ( ")" ) ; 
+
+  Declaration: 
+ std :: cout << "\n\n  Pretty Stmt:    " ; 
+
+  Executable: 
+ std :: cout << "\n\n  Pretty Stmt:    " ; 
+
+  Declaration: 
+ for ( int i = 0 ; i < len + 1 ; ++ i ) std :: cout << ( * pTc ) [ i ] << " " ; 
+
+  Executable: 
+ for ( int i = 0 ; i < len + 1 ; ++ i ) std :: cout << ( * pTc ) [ i ] << " " ; 
+
+  Declaration: 
+ std :: cout << "\n" ; 
+
+  Executable: 
+ std :: cout << "\n" ; 
+
+  Function doAction, lines = 10 , startLine = 420 , endLine = 429 , complexity = 1
+
+  FuncDef: 
+ bool isType ( const std :: string & tok ) { 
+
+  Declaration: 
+ const static std :: string keys [ ] = { 
+
+  Declaration: 
+ for ( int i = 0 ; i < 3 ; ++ i ) if ( keys [ i ] == tok ) return true ; 
+
+  Executable: 
+ for ( int i = 0 ; i < 3 ; ++ i ) if ( keys [ i ] == tok ) return true ; 
+
+  Executable: 
+ return false ; 
+
+  Function isType, lines = 8 , startLine = 440 , endLine = 447 , complexity = 1
+
+  FuncDef: 
+ bool isModifier ( const std :: string & tok ) { 
+
+  Declaration: 
+ const size _ t numKeys = 22 ; 
+
+  Executable: 
+ const size _ t numKeys = 22 ; 
+
+  Declaration: 
+ const static std :: string keys [ numKeys ] = { 
+
+  Declaration: 
+ for ( int i = 0 ; i < numKeys ; ++ i ) if ( tok == keys [ i ] ) return true ; 
+
+  Executable: 
+ for ( int i = 0 ; i < numKeys ; ++ i ) if ( tok == keys [ i ] ) return true ; 
+
+  Executable: 
+ return false ; 
+
+  Function isModifier, lines = 12 , startLine = 450 , endLine = 461 , complexity = 1
+
+  FuncDef: 
+ void condenseTemplateTypes ( ITokCollection & tc ) { 
+
+  Declaration: 
+ size _ t start = tc . find ( "<" ) ; 
+
+  Executable: 
+ size _ t start = tc . find ( "<" ) ; 
+
+  Declaration: 
+ size _ t end = tc . find ( ">" ) ; 
+
+  Executable: 
+ size _ t end = tc . find ( ">" ) ; 
+
+  Declaration: 
+ if ( start > = end || start == 0 || end > tc . length ( ) ) return ; 
+
+  Executable: 
+ if ( start > = end || start == 0 || end > tc . length ( ) ) return ; 
+
+  Declaration: 
+ if ( end == tc . length ( ) ) end = tc . find ( ">::" ) ; 
+
+  Executable: 
+ if ( end == tc . length ( ) ) end = tc . find ( ">::" ) ; 
+
+  Declaration: 
+ if ( end == tc . length ( ) ) return ; 
+
+  Executable: 
+ if ( end == tc . length ( ) ) return ; 
+
+  Declaration: 
+ std :: string save = tc [ end ] ; 
+
+  Declaration: 
+ std :: string tok = tc [ start - 1 ] ; 
+
+  Declaration: 
+ for ( size _ t i = start ; i < end + 1 ; ++ i ) tok += tc [ i ] ; 
+
+  Executable: 
+ for ( size _ t i = start ; i < end + 1 ; ++ i ) tok += tc [ i ] ; 
+
+  Declaration: 
+ for ( size _ t i = start ; i < end + 1 ; ++ i ) tc . remove ( start ) ; 
+
+  Executable: 
+ for ( size _ t i = start ; i < end + 1 ; ++ i ) tc . remove ( start ) ; 
+
+  Declaration: 
+ tok += tc [ start + 1 ] ; 
+
+  Executable: 
+ tok += tc [ start + 1 ] ; 
+
+  Declaration: 
+ tc . remove ( start ) ; 
+
+  Executable: 
+ tc . remove ( start ) ; 
+
+  Declaration: 
+ tc [ start - 1 ] = tok ; 
+
+  Executable: 
+ tc [ start - 1 ] = tok ; 
+
+  Function condenseTemplateTypes, lines = 25 , startLine = 464 , endLine = 488 , complexity = 3
+
+  FuncDef: 
+ bool isSpecialKeyWord ( const std :: string & tok ) { 
+
+  Declaration: 
+ const static std :: string keys [ ] = { 
+
+  Declaration: 
+ for ( int i = 0 ; i < 5 ; ++ i ) if ( tok == keys [ i ] ) return true ; 
+
+  Executable: 
+ for ( int i = 0 ; i < 5 ; ++ i ) if ( tok == keys [ i ] ) return true ; 
+
+  Executable: 
+ return false ; 
+
+  Function isSpecialKeyWord, lines = 8 , startLine = 491 , endLine = 498 , complexity = 1
+
+  FuncDef: 
+ void removeInvocationParens ( ITokCollection & tc ) { 
+
+  Declaration: 
+ size _ t start = tc . find ( "(" ) ; 
+
+  Executable: 
+ size _ t start = tc . find ( "(" ) ; 
+
+  Declaration: 
+ size _ t end = tc . find ( ")" ) ; 
+
+  Executable: 
+ size _ t end = tc . find ( ")" ) ; 
+
+  Declaration: 
+ if ( start > = end || end == tc . length ( ) || start == 0 ) return ; 
+
+  Executable: 
+ if ( start > = end || end == tc . length ( ) || start == 0 ) return ; 
+
+  Declaration: 
+ if ( isSpecialKeyWord ( tc [ start - 1 ] ) ) return ; 
+
+  Executable: 
+ if ( isSpecialKeyWord ( tc [ start - 1 ] ) ) return ; 
+
+  Declaration: 
+ for ( size _ t i = start ; i < end + 1 ; ++ i ) tc . remove ( start ) ; 
+
+  Executable: 
+ for ( size _ t i = start ; i < end + 1 ; ++ i ) tc . remove ( start ) ; 
+
+  Function removeInvocationParens, lines = 10 , startLine = 501 , endLine = 510 , complexity = 1
+
+  FuncDef: 
+ bool doTest ( ITokCollection * & pTc ) { 
+
+  Declaration: 
+ ITokCollection & in = * pTc ; 
+
+  Declaration: 
+ Scanner :: SemiExp tc ; 
+
+  Executable: 
+ Scanner :: SemiExp tc ; 
+
+  Declaration: 
+ for ( size _ t i = 0 ; i < in . length ( ) ; ++ i ) tc . push _ back ( in [ i ] ) ; 
+
+  Executable: 
+ for ( size _ t i = 0 ; i < in . length ( ) ; ++ i ) tc . push _ back ( in [ i ] ) ; 
+
+  Executable: 
+ removeInvocationParens ( tc ) ; 
+
+  Executable: 
+ condenseTemplateTypes ( tc ) ; 
+
+  Declaration: 
+ Scanner :: SemiExp se ; 
+
+  Executable: 
+ Scanner :: SemiExp se ; 
+
+  Declaration: 
+ if ( isModifier ( tc [ i ] ) ) continue ; 
+
+  Executable: 
+ if ( isModifier ( tc [ i ] ) ) continue ; 
+
+  Declaration: 
+ if ( se . isComment ( tc [ i ] ) || tc [ i ] == "\n" || tc [ i ] == "return" ) continue ; 
+
+  Executable: 
+ if ( se . isComment ( tc [ i ] ) || tc [ i ] == "\n" || tc [ i ] == "return" ) continue ; 
+
+  Declaration: 
+ if ( tc [ i ] == "{" ) break ; 
+
+  Executable: 
+ if ( tc [ i ] == "{" ) break ; 
+
+  Declaration: 
+ else se . push _ back ( tc [ i ] ) ; 
+
+  Executable: 
+ else se . push _ back ( tc [ i ] ) ; 
+
+  Executable: 
+ doActions ( pTc ) ; 
+
+  Executable: 
+ return true ; 
+
+  Executable: 
+ return true ; 
+
+  Function doTest, lines = 33 , startLine = 513 , endLine = 545 , complexity = 5
+
+  Declaration: 
+ Repository * p _ Repos ; 
+
+  Executable: 
+ Repository * p _ Repos ; 
+
+  FuncDef: 
+ PushTypes ( Repository * pRepos ) { 
+
+  Declaration: 
+ p _ Repos = pRepos ; 
+
+  Executable: 
+ p _ Repos = pRepos ; 
+
+  Function PushTypes, lines = 3 , startLine = 556 , endLine = 558 , complexity = 1
+
+  FuncDef: 
+ std :: string isType ( const std :: string & tok ) { 
+
+  Declaration: 
+ const static std :: string keys [ ] = { 
+
+  Declaration: 
+ for ( int i = 0 ; i < 3 ; ++ i ) if ( keys [ i ] == tok ) return tok ; 
+
+  Executable: 
+ for ( int i = 0 ; i < 3 ; ++ i ) if ( keys [ i ] == tok ) return tok ; 
+
+  Executable: 
+ return "" ; 
+
+  Function isType, lines = 8 , startLine = 560 , endLine = 567 , complexity = 1
+
+  FuncDef: 
+ void doAction ( ITokCollection * & pTc ) { 
+
+  Declaration: 
+ ASTNode * node = p _ Repos - > scopeStack ( ) . top ( ) ; 
+
+  Declaration: 
+ p _ Repos - > scopeStack ( ) . pop ( ) ; 
+
+  Executable: 
+ p _ Repos - > scopeStack ( ) . pop ( ) ; 
+
+  Declaration: 
+ p _ Repos - > getAST ( ) - > deleteChild ( node ) ; 
+
+  Executable: 
+ p _ Repos - > getAST ( ) - > deleteChild ( node ) ; 
+
+  Declaration: 
+ std :: string type , name ; 
+
+  Executable: 
+ std :: string type , name ; 
+
+  Declaration: 
+ if ( isType ( ( * pTc ) [ i ] ) ! = "" ) type = isType ( ( * pTc ) [ i ] ) ; 
+
+  Executable: 
+ if ( isType ( ( * pTc ) [ i ] ) ! = "" ) type = isType ( ( * pTc ) [ i ] ) ; 
+
+  Declaration: 
+ size _ t type _ i = pTc - > find ( type ) ; 
+
+  Executable: 
+ size _ t type _ i = pTc - > find ( type ) ; 
+
+  Executable: 
+ name = ( * pTc ) [ type _ i + 1 ] ; 
+
+  Declaration: 
+ ASTNode * elem = new ASTNode ( ) ; 
+
+  Declaration: 
+ elem - > setType ( type ) ; 
+
+  Executable: 
+ elem - > setType ( type ) ; 
+
+  Declaration: 
+ elem - > setName ( name ) ; 
+
+  Executable: 
+ elem - > setName ( name ) ; 
+
+  Declaration: 
+ elem - > setLineStart ( p _ Repos - > lineCount ( ) ) ; 
+
+  Executable: 
+ elem - > setLineStart ( p _ Repos - > lineCount ( ) ) ; 
+
+  Declaration: 
+ p _ Repos - > scopeStack ( ) . top ( ) - > addChild ( elem ) ; 
+
+  Executable: 
+ p _ Repos - > scopeStack ( ) . top ( ) - > addChild ( elem ) ; 
+
+  Declaration: 
+ p _ Repos - > scopeStack ( ) . push ( elem ) ; 
+
+  Executable: 
+ p _ Repos - > scopeStack ( ) . push ( elem ) ; 
+
+  Function doAction, lines = 24 , startLine = 569 , endLine = 592 , complexity = 2
+
+  FuncDef: 
+ bool isModifier ( const std :: string & tok ) { 
+
+  Declaration: 
+ const size _ t numKeys = 22 ; 
+
+  Executable: 
+ const size _ t numKeys = 22 ; 
+
+  Declaration: 
+ const static std :: string keys [ numKeys ] = { 
+
+  Declaration: 
+ for ( int i = 0 ; i < numKeys ; ++ i ) if ( tok == keys [ i ] ) return true ; 
+
+  Executable: 
+ for ( int i = 0 ; i < numKeys ; ++ i ) if ( tok == keys [ i ] ) return true ; 
+
+  Executable: 
+ return false ; 
+
+  Function isModifier, lines = 12 , startLine = 604 , endLine = 615 , complexity = 1
+
+  FuncDef: 
+ void condenseTemplateTypes ( ITokCollection & tc ) { 
+
+  Declaration: 
+ size _ t start = tc . find ( "<" ) ; 
+
+  Executable: 
+ size _ t start = tc . find ( "<" ) ; 
+
+  Declaration: 
+ size _ t end = tc . find ( ">" ) ; 
+
+  Executable: 
+ size _ t end = tc . find ( ">" ) ; 
+
+  Declaration: 
+ if ( start > = end || start == 0 || end > tc . length ( ) ) return ; 
+
+  Executable: 
+ if ( start > = end || start == 0 || end > tc . length ( ) ) return ; 
+
+  Declaration: 
+ if ( end == tc . length ( ) ) end = tc . find ( ">::" ) ; 
+
+  Executable: 
+ if ( end == tc . length ( ) ) end = tc . find ( ">::" ) ; 
+
+  Declaration: 
+ if ( end == tc . length ( ) ) return ; 
+
+  Executable: 
+ if ( end == tc . length ( ) ) return ; 
+
+  Declaration: 
+ std :: string save = tc [ end ] ; 
+
+  Declaration: 
+ std :: string tok = tc [ start - 1 ] ; 
+
+  Declaration: 
+ for ( size _ t i = start ; i < end + 1 ; ++ i ) tok += tc [ i ] ; 
+
+  Executable: 
+ for ( size _ t i = start ; i < end + 1 ; ++ i ) tok += tc [ i ] ; 
+
+  Declaration: 
+ for ( size _ t i = start ; i < end + 1 ; ++ i ) tc . remove ( start ) ; 
+
+  Executable: 
+ for ( size _ t i = start ; i < end + 1 ; ++ i ) tc . remove ( start ) ; 
+
+  Declaration: 
+ tok += tc [ start + 1 ] ; 
+
+  Executable: 
+ tok += tc [ start + 1 ] ; 
+
+  Declaration: 
+ tc . remove ( start ) ; 
+
+  Executable: 
+ tc . remove ( start ) ; 
+
+  Declaration: 
+ tc [ start - 1 ] = tok ; 
+
+  Executable: 
+ tc [ start - 1 ] = tok ; 
+
+  Function condenseTemplateTypes, lines = 26 , startLine = 617 , endLine = 642 , complexity = 3
+
+  FuncDef: 
+ bool isSpecialKeyWord ( const std :: string & tok ) { 
+
+  Declaration: 
+ const static std :: string keys [ ] = { 
+
+  Declaration: 
+ for ( int i = 0 ; i < 5 ; ++ i ) if ( tok == keys [ i ] ) return true ; 
+
+  Executable: 
+ for ( int i = 0 ; i < 5 ; ++ i ) if ( tok == keys [ i ] ) return true ; 
+
+  Executable: 
+ return false ; 
+
+  Function isSpecialKeyWord, lines = 8 , startLine = 644 , endLine = 651 , complexity = 1
+
+  FuncDef: 
+ void removeInvocationParens ( ITokCollection & tc ) { 
+
+  Declaration: 
+ size _ t start = tc . find ( "(" ) ; 
+
+  Executable: 
+ size _ t start = tc . find ( "(" ) ; 
+
+  Declaration: 
+ size _ t end = tc . find ( ")" ) ; 
+
+  Executable: 
+ size _ t end = tc . find ( ")" ) ; 
+
+  Declaration: 
+ if ( start > = end || end == tc . length ( ) || start == 0 ) return ; 
+
+  Executable: 
+ if ( start > = end || end == tc . length ( ) || start == 0 ) return ; 
+
+  Declaration: 
+ if ( isSpecialKeyWord ( tc [ start - 1 ] ) ) return ; 
+
+  Executable: 
+ if ( isSpecialKeyWord ( tc [ start - 1 ] ) ) return ; 
+
+  Declaration: 
+ for ( size _ t i = start ; i < end + 1 ; ++ i ) tc . remove ( start ) ; 
+
+  Executable: 
+ for ( size _ t i = start ; i < end + 1 ; ++ i ) tc . remove ( start ) ; 
+
+  Function removeInvocationParens, lines = 11 , startLine = 653 , endLine = 663 , complexity = 1
+
+  FuncDef: 
+ bool isInitializer ( ITokCollection * & pTc ) { 
+
+  Declaration: 
+ size _ t controlIndex = pTc - > find ( "{" ) ; 
+
+  Executable: 
+ size _ t controlIndex = pTc - > find ( "{" ) ; 
+
+  Declaration: 
+ if ( controlIndex > pTc - > length ( ) ) return false ; 
+
+  Executable: 
+ if ( controlIndex > pTc - > length ( ) ) return false ; 
+
+  Executable: 
+ controlIndex -- ; 
+
+  Declaration: 
+ while ( ( * pTc ) [ controlIndex ] == "\n" ) controlIndex -- ; 
+
+  Executable: 
+ while ( ( * pTc ) [ controlIndex ] == "\n" ) controlIndex -- ; 
+
+  Declaration: 
+ if ( ( * pTc ) [ controlIndex ] == "=" ) return true ; 
+
+  Executable: 
+ if ( ( * pTc ) [ controlIndex ] == "=" ) return true ; 
+
+  Function isInitializer, lines = 10 , startLine = 664 , endLine = 673 , complexity = 1
+
+  FuncDef: 
+ bool doTest ( ITokCollection * & pTc ) { 
+
+  Declaration: 
+ ITokCollection & in = * pTc ; 
+
+  Declaration: 
+ Scanner :: SemiExp tc ; 
+
+  Executable: 
+ Scanner :: SemiExp tc ; 
+
+  Declaration: 
+ for ( size _ t i = 0 ; i < in . length ( ) ; ++ i ) tc . push _ back ( in [ i ] ) ; 
+
+  Executable: 
+ for ( size _ t i = 0 ; i < in . length ( ) ; ++ i ) tc . push _ back ( in [ i ] ) ; 
+
+  Executable: 
+ removeInvocationParens ( tc ) ; 
+
+  Executable: 
+ condenseTemplateTypes ( tc ) ; 
+
+  Declaration: 
+ Scanner :: SemiExp se ; 
+
+  Executable: 
+ Scanner :: SemiExp se ; 
+
+  Declaration: 
+ bool flag = false ; 
+
+  Declaration: 
+ if ( isModifier ( tc [ i ] ) ) continue ; 
+
+  Executable: 
+ if ( isModifier ( tc [ i ] ) ) continue ; 
+
+  Declaration: 
+ if ( se . isComment ( tc [ i ] ) || tc [ i ] == "\n" || tc [ i ] == "return" ) continue ; 
+
+  Executable: 
+ if ( se . isComment ( tc [ i ] ) || tc [ i ] == "\n" || tc [ i ] == "return" ) continue ; 
+
+  Executable: 
+ flag = true ; 
+
+  Executable: 
+ break ; 
+
+  Declaration: 
+ else se . push _ back ( tc [ i ] ) ; 
+
+  Executable: 
+ else se . push _ back ( tc [ i ] ) ; 
+
+  Executable: 
+ doActions ( pTc ) ; 
+
+  Executable: 
+ return true ; 
+
+  Executable: 
+ return true ; 
+
+  Function doTest, lines = 38 , startLine = 675 , endLine = 712 , complexity = 5
+
+  Declaration: 
+ Repository * p _ Repos ; 
+
+  Executable: 
+ Repository * p _ Repos ; 
+
+  FuncDef: 
+ ShowDeclaration ( Repository * pRepos ) { 
+
+  Declaration: 
+ p _ Repos = pRepos ; 
+
+  Executable: 
+ p _ Repos = pRepos ; 
+
+  Function ShowDeclaration, lines = 3 , startLine = 723 , endLine = 725 , complexity = 1
+
+  FuncDef: 
+ void doAction ( ITokCollection * & pTc ) { 
+
+  Declaration: 
+ ITokCollection & tc = * pTc ; 
+
+  Declaration: 
+ ASTNode * node = p _ Repos - > scopeStack ( ) . top ( ) ; 
+
+  Declaration: 
+ node - > setType ( "delete" ) ; 
+
+  Executable: 
+ node - > setType ( "delete" ) ; 
+
+  Declaration: 
+ Scanner :: SemiExp se ; 
+
+  Executable: 
+ Scanner :: SemiExp se ; 
+
+  Declaration: 
+ for ( size _ t i = 0 ; i < tc . length ( ) ; ++ i ) if ( ! se . isComment ( tc [ i ] ) ) se . push _ back ( tc [ i ] ) ; 
+
+  Executable: 
+ for ( size _ t i = 0 ; i < tc . length ( ) ; ++ i ) if ( ! se . isComment ( tc [ i ] ) ) se . push _ back ( tc [ i ] ) ; 
+
+  Declaration: 
+ std :: cout << "\n  Declaration: " << se . show ( ) ; 
+
+  Executable: 
+ std :: cout << "\n  Declaration: " << se . show ( ) ; 
+
+  Function doAction, lines = 15 , startLine = 727 , endLine = 741 , complexity = 2
+
+  FuncDef: 
+ bool isModifier ( const std :: string & tok ) { 
+
+  Declaration: 
+ const size _ t numKeys = 22 ; 
+
+  Executable: 
+ const size _ t numKeys = 22 ; 
+
+  Declaration: 
+ const static std :: string keys [ numKeys ] = { 
+
+  Declaration: 
+ for ( int i = 0 ; i < numKeys ; ++ i ) if ( tok == keys [ i ] ) return true ; 
+
+  Executable: 
+ for ( int i = 0 ; i < numKeys ; ++ i ) if ( tok == keys [ i ] ) return true ; 
+
+  Executable: 
+ return false ; 
+
+  Function isModifier, lines = 12 , startLine = 751 , endLine = 762 , complexity = 1
+
+  FuncDef: 
+ void condenseTemplateTypes ( ITokCollection & tc ) { 
+
+  Declaration: 
+ size _ t start = tc . find ( "<" ) ; 
+
+  Executable: 
+ size _ t start = tc . find ( "<" ) ; 
+
+  Declaration: 
+ size _ t end = tc . find ( ">" ) ; 
+
+  Executable: 
+ size _ t end = tc . find ( ">" ) ; 
+
+  Declaration: 
+ if ( start > = end || start == 0 || end > tc . length ( ) ) return ; 
+
+  Executable: 
+ if ( start > = end || start == 0 || end > tc . length ( ) ) return ; 
+
+  Declaration: 
+ if ( end == tc . length ( ) ) end = tc . find ( ">::" ) ; 
+
+  Executable: 
+ if ( end == tc . length ( ) ) end = tc . find ( ">::" ) ; 
+
+  Declaration: 
+ if ( end == tc . length ( ) ) return ; 
+
+  Executable: 
+ if ( end == tc . length ( ) ) return ; 
+
+  Declaration: 
+ std :: string save = tc [ end ] ; 
+
+  Declaration: 
+ std :: string tok = tc [ start - 1 ] ; 
+
+  Declaration: 
+ for ( size _ t i = start ; i < end + 1 ; ++ i ) tok += tc [ i ] ; 
+
+  Executable: 
+ for ( size _ t i = start ; i < end + 1 ; ++ i ) tok += tc [ i ] ; 
+
+  Declaration: 
+ for ( size _ t i = start ; i < end + 1 ; ++ i ) tc . remove ( start ) ; 
+
+  Executable: 
+ for ( size _ t i = start ; i < end + 1 ; ++ i ) tc . remove ( start ) ; 
+
+  Declaration: 
+ tok += tc [ start + 1 ] ; 
+
+  Executable: 
+ tok += tc [ start + 1 ] ; 
+
+  Declaration: 
+ tc . remove ( start ) ; 
+
+  Executable: 
+ tc . remove ( start ) ; 
+
+  Declaration: 
+ tc [ start - 1 ] = tok ; 
+
+  Executable: 
+ tc [ start - 1 ] = tok ; 
+
+  Function condenseTemplateTypes, lines = 26 , startLine = 764 , endLine = 789 , complexity = 3
+
+  FuncDef: 
+ bool isSpecialKeyWord ( const std :: string & tok ) { 
+
+  Declaration: 
+ const static std :: string keys [ ] = { 
+
+  Declaration: 
+ for ( int i = 0 ; i < 5 ; ++ i ) if ( tok == keys [ i ] ) return true ; 
+
+  Executable: 
+ for ( int i = 0 ; i < 5 ; ++ i ) if ( tok == keys [ i ] ) return true ; 
+
+  Executable: 
+ return false ; 
+
+  Function isSpecialKeyWord, lines = 8 , startLine = 792 , endLine = 799 , complexity = 1
+
+  FuncDef: 
+ void removeInvocationParens ( ITokCollection & tc ) { 
+
+  Declaration: 
+ size _ t start = tc . find ( "(" ) ; 
+
+  Executable: 
+ size _ t start = tc . find ( "(" ) ; 
+
+  Declaration: 
+ size _ t end = tc . find ( ")" ) ; 
+
+  Executable: 
+ size _ t end = tc . find ( ")" ) ; 
+
+  Declaration: 
+ if ( start > = end || end == tc . length ( ) || start == 0 ) return ; 
+
+  Executable: 
+ if ( start > = end || end == tc . length ( ) || start == 0 ) return ; 
+
+  Declaration: 
+ if ( isSpecialKeyWord ( tc [ start - 1 ] ) ) return ; 
+
+  Executable: 
+ if ( isSpecialKeyWord ( tc [ start - 1 ] ) ) return ; 
+
+  Declaration: 
+ for ( size _ t i = start ; i < end + 1 ; ++ i ) tc . remove ( start ) ; 
+
+  Executable: 
+ for ( size _ t i = start ; i < end + 1 ; ++ i ) tc . remove ( start ) ; 
+
+  Function removeInvocationParens, lines = 11 , startLine = 801 , endLine = 811 , complexity = 1
+
+  FuncDef: 
+ bool doTest ( ITokCollection * & pTc ) { 
+
+  Declaration: 
+ ITokCollection & in = * pTc ; 
+
+  Declaration: 
+ Scanner :: SemiExp tc ; 
+
+  Executable: 
+ Scanner :: SemiExp tc ; 
+
+  Declaration: 
+ for ( size _ t i = 0 ; i < in . length ( ) ; ++ i ) tc . push _ back ( in [ i ] ) ; 
+
+  Executable: 
+ for ( size _ t i = 0 ; i < in . length ( ) ; ++ i ) tc . push _ back ( in [ i ] ) ; 
+
+  Executable: 
+ removeInvocationParens ( tc ) ; 
+
+  Executable: 
+ condenseTemplateTypes ( tc ) ; 
+
+  Declaration: 
+ Scanner :: SemiExp se ; 
+
+  Executable: 
+ Scanner :: SemiExp se ; 
+
+  Declaration: 
+ if ( isModifier ( tc [ i ] ) ) continue ; 
+
+  Executable: 
+ if ( isModifier ( tc [ i ] ) ) continue ; 
+
+  Declaration: 
+ if ( se . isComment ( tc [ i ] ) || tc [ i ] == "\n" || tc [ i ] == "return" ) continue ; 
+
+  Executable: 
+ if ( se . isComment ( tc [ i ] ) || tc [ i ] == "\n" || tc [ i ] == "return" ) continue ; 
+
+  Declaration: 
+ if ( tc [ i ] == "=" || tc [ i ] == ";" ) break ; 
+
+  Executable: 
+ if ( tc [ i ] == "=" || tc [ i ] == ";" ) break ; 
+
+  Declaration: 
+ else se . push _ back ( tc [ i ] ) ; 
+
+  Executable: 
+ else se . push _ back ( tc [ i ] ) ; 
+
+  Executable: 
+ doActions ( pTc ) ; 
+
+  Executable: 
+ return true ; 
+
+  Executable: 
+ return true ; 
+
+  Function doTest, lines = 35 , startLine = 813 , endLine = 847 , complexity = 4
+
+  FuncDef: 
+ void doAction ( ITokCollection * & pTc ) { 
+
+  Declaration: 
+ ITokCollection & tc = * pTc ; 
+
+  Declaration: 
+ Scanner :: SemiExp se ; 
+
+  Executable: 
+ Scanner :: SemiExp se ; 
+
+  Declaration: 
+ if ( ! se . isComment ( tc [ i ] ) ) se . push _ back ( tc [ i ] ) ; 
+
+  Executable: 
+ if ( ! se . isComment ( tc [ i ] ) ) se . push _ back ( tc [ i ] ) ; 
+
+  Declaration: 
+ std :: cout << "\n  Executable: " << se . show ( ) ; 
+
+  Executable: 
+ std :: cout << "\n  Executable: " << se . show ( ) ; 
+
+  Function doAction, lines = 12 , startLine = 857 , endLine = 868 , complexity = 2
+
+  FuncDef: 
+ # endif 

@@ -1,0 +1,205 @@
+
+  Declaration: 
+ Repository * p _ Repos ; 
+
+  Executable: 
+ Repository * p _ Repos ; 
+
+  FuncDef: 
+ PushFunction ( Repository * pRepos ) { 
+
+  Declaration: 
+ p _ Repos = pRepos ; 
+
+  Executable: 
+ p _ Repos = pRepos ; 
+
+  Function PushFunction, lines = 3 , startLine = 6 , endLine = 8 , complexity = 1
+
+  FuncDef: 
+ void doAction ( ITokCollection * & pTc ) { 
+
+  Declaration: 
+ std :: cout << "\n  Demonstrating several ways to invoke a function" ; 
+
+  Executable: 
+ std :: cout << "\n  Demonstrating several ways to invoke a function" ; 
+
+  Declaration: 
+ std :: cout << "\n =================================================\n" ; 
+
+  Executable: 
+ std :: cout << "\n =================================================\n" ; 
+
+  Declaration: 
+ std :: cout << testFunction ( __ LINE __, "direct invocation" ) ; 
+
+  Executable: 
+ std :: cout << testFunction ( __ LINE __, "direct invocation" ) ; 
+
+  Declaration: 
+ using Fptr = std :: string ( * ) ( size _ t , const std :: string & ) ; 
+
+  Declaration: 
+ Fptr fptr = testFunction ; 
+
+  Declaration: 
+ std :: cout << fptr ( __ LINE __, "via function pointer" ) ; 
+
+  Executable: 
+ std :: cout << fptr ( __ LINE __, "via function pointer" ) ; 
+
+  Declaration: 
+ Functor functor ( __ LINE __ + 1 , "via functor" ) ; 
+
+  Declaration: 
+ std :: cout << functor ( ) ; 
+
+  Executable: 
+ std :: cout << functor ( ) ; 
+
+  Declaration: 
+ std :: function < std :: string ( size _ t , const std :: string & ) > f = testFunction ; 
+
+  Declaration: 
+ std :: cout << f ( __ LINE __, "via std::function<R(A...)>" ) ; 
+
+  Executable: 
+ std :: cout << f ( __ LINE __, "via std::function<R(A...)>" ) ; 
+
+  FuncDef: 
+ f = [ ] ( size _ t size , const std :: string & msg ) - > std :: string { 
+
+  Executable: 
+ return testFunction ( size , msg ) ; 
+
+  Declaration: 
+ std :: cout << f ( __ LINE __, "via lambda" ) ; 
+
+  Executable: 
+ std :: cout << f ( __ LINE __, "via lambda" ) ; 
+
+  Declaration: 
+ testClass tc ; 
+
+  Declaration: 
+ std :: cout << tc . mf1 ( f , __ LINE __, "via function passed to class member function" ) ; 
+
+  Executable: 
+ std :: cout << tc . mf1 ( f , __ LINE __, "via function passed to class member function" ) ; 
+
+  Declaration: 
+ std :: string msg = "via lamda closure passed to class member function" ; 
+
+  FuncDef: 
+ std :: cout << tc . mf2 ( [ & ] ( ) { 
+
+  Executable: 
+ return testFunction ( __ LINE __, msg ) ; 
+
+  Declaration: 
+ int lineNo = __ LINE __ + 2 ; 
+
+  Declaration: 
+ std :: string mutableMsg = "first message" ; 
+
+  FuncDef: 
+ std :: cout << [ & mutableMsg , lineNo ] ( ) - > std :: string { 
+
+  Executable: 
+ return mutableMsg = testFunction ( lineNo , mutableMsg ) + " with some more text" ; 
+
+  Declaration: 
+ ( ) ; 
+
+  Declaration: 
+ std :: cout << mutableMsg ; 
+
+  Executable: 
+ std :: cout << mutableMsg ; 
+
+  Executable: 
+ lineNo = __ LINE __ + 2 ; 
+
+  Executable: 
+ mutableMsg = "second message" ; 
+
+  FuncDef: 
+ std :: cout << [ mutableMsg , lineNo ] ( ) - > std :: string { 
+
+  Declaration: 
+ return testFunction ( lineNo , mutableMsg ) + " with some more text" ; 
+
+  Executable: 
+ return testFunction ( lineNo , mutableMsg ) + " with some more text" ; 
+
+  Declaration: 
+ ( ) ; 
+
+  Executable: 
+ lineNo = __ LINE __ + 2 ; 
+
+  Executable: 
+ mutableMsg = "third message" ; 
+
+  FuncDef: 
+ std :: cout << [ = ] ( ) - > std :: string { 
+
+  Declaration: 
+ return testFunction ( lineNo , mutableMsg ) + " with some more text" ; 
+
+  Executable: 
+ return testFunction ( lineNo , mutableMsg ) + " with some more text" ; 
+
+  Declaration: 
+ ( ) ; 
+
+  Executable: 
+ lineNo = __ LINE __ + 2 ; 
+
+  Executable: 
+ mutableMsg = "third message" ; 
+
+  FuncDef: 
+ std :: cout << [ & ] ( ) - > std :: string { 
+
+  Declaration: 
+ mutableMsg += " with some more text\n" ; 
+
+  Executable: 
+ mutableMsg += " with some more text\n" ; 
+
+  Declaration: 
+ return testFunction ( lineNo , mutableMsg ) + " with some more text" ; 
+
+  Executable: 
+ return testFunction ( lineNo , mutableMsg ) + " with some more text" ; 
+
+  Declaration: 
+ ( ) ; 
+
+  Executable: 
+ msg = "via mem_fun taking lambda with closure" ; 
+
+  Declaration: 
+ auto mf = mem _ fn ( & testClass :: mf2 ) ; 
+
+  FuncDef: 
+ testClass :: G h = [ & ] ( ) { 
+
+  Executable: 
+ return testFunction ( __ LINE __ + 1 , msg ) ; 
+
+  Declaration: 
+ std :: cout << mf ( & tc , h ) ; 
+
+  Executable: 
+ std :: cout << mf ( & tc , h ) ; 
+
+  Declaration: 
+ std :: cout << "\n\n" ; 
+
+  Executable: 
+ std :: cout << "\n\n" ; 
+
+  Function doAction, lines = 84 , startLine = 10 , endLine = 93 , complexity = 8

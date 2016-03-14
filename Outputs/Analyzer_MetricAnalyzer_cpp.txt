@@ -1,0 +1,474 @@
+
+  FuncDef: 
+ # define _ CRT _ SECURE _ NO _ DEPRECATE 
+
+  FuncDef: 
+ # define NO _ WARN _ MBCS _ MFC _ DEPRECATION 
+
+  FuncDef: 
+ # include "MetricAnalyzer.h" 
+
+  FuncDef: 
+ # include "..\\Utilities\Utilities.h" 
+
+  FuncDef: 
+ # include "..\\Parser\Parser.h" 
+
+  FuncDef: 
+ # include "..\\Parser\AST.h" 
+
+  FuncDef: 
+ # include "..\\Parser\ConfigureParser.h" 
+
+  FuncDef: 
+ # include "..\\Parser\ActionsAndRules.h" 
+
+  FuncDef: 
+ # include "..\\FileMgr\FileMgr.h" 
+
+  FuncDef: 
+ # include < string > 
+
+  FuncDef: 
+ # include < iostream > 
+
+  FuncDef: 
+ # include < vector > 
+
+  FuncDef: 
+ # include < iomanip > 
+
+  FuncDef: 
+ # include < fstream > 
+
+  Declaration: 
+ using SH = Utilities :: StringHelper ; 
+
+  Declaration: 
+ std :: string MetricAnalyzer :: outputDir = "./Outputs/" ; 
+
+  Executable: 
+ std :: string MetricAnalyzer :: outputDir = "./Outputs/" ; 
+
+  FuncDef: 
+ size _ t MetricAnalyzer :: getTotalFComplexity ( ) { 
+
+  Executable: 
+ return totalFComplexity ; 
+
+  Function getTotalFComplexity, lines = 3 , startLine = 33 , endLine = 35 , complexity = 1
+
+  FuncDef: 
+ size _ t MetricAnalyzer :: getTotalFLines ( ) { 
+
+  Executable: 
+ return totalFLines ; 
+
+  Function getTotalFLines, lines = 3 , startLine = 38 , endLine = 40 , complexity = 1
+
+  FuncDef: 
+ size _ t MetricAnalyzer :: getTotalLines ( ) { 
+
+  Executable: 
+ return totalLines ; 
+
+  Function getTotalLines, lines = 3 , startLine = 43 , endLine = 45 , complexity = 1
+
+  FuncDef: 
+ void MetricAnalyzer :: setRepository ( Repository * Repos ) { 
+
+  Declaration: 
+ _ Repos = Repos ; 
+
+  Executable: 
+ allFunctions = _ Repos - > getAST ( ) - > getAllFunctions ( ) ; 
+
+  Declaration: 
+ calcTotalFlines _ Complexity ( ) ; 
+
+  Executable: 
+ calcTotalFlines _ Complexity ( ) ; 
+
+  Executable: 
+ calcTotalLines ( ) ; 
+
+  Executable: 
+ updateRoot ( ) ; 
+
+  Function setRepository, lines = 9 , startLine = 48 , endLine = 56 , complexity = 2
+
+  FuncDef: 
+ void MetricAnalyzer :: calcTotalFlines _ Complexity ( ) { 
+
+  Executable: 
+ totalFLines = 0 ; 
+
+  Declaration: 
+ size _ t lc = allFunctions [ i ] . getLineCount ( ) ; 
+
+  Executable: 
+ size _ t lc = allFunctions [ i ] . getLineCount ( ) ; 
+
+  Declaration: 
+ totalFLines += lc ; 
+
+  Executable: 
+ totalFLines += lc ; 
+
+  Declaration: 
+ if ( lc > maxFLines ) maxFLines = lc ; 
+
+  Executable: 
+ if ( lc > maxFLines ) maxFLines = lc ; 
+
+  Declaration: 
+ size _ t cc = allFunctions [ i ] . getCC ( ) ; 
+
+  Executable: 
+ size _ t cc = allFunctions [ i ] . getCC ( ) ; 
+
+  Declaration: 
+ totalFComplexity += cc ; 
+
+  Executable: 
+ totalFComplexity += cc ; 
+
+  Declaration: 
+ if ( cc > maxFComplexity ) maxFComplexity = cc ; 
+
+  Executable: 
+ if ( cc > maxFComplexity ) maxFComplexity = cc ; 
+
+  Declaration: 
+ if ( lc > 50 || cc > 10 ) faultyFunctions . insert ( std :: make _ tuple ( cc , lc , allFunctions [ i ] . getName ( ) ) ) ; 
+
+  Executable: 
+ if ( lc > 50 || cc > 10 ) faultyFunctions . insert ( std :: make _ tuple ( cc , lc , allFunctions [ i ] . getName ( ) ) ) ; 
+
+  Function Complexity, lines = 16 , startLine = 60 , endLine = 75 , complexity = 2
+
+  FuncDef: 
+ void MetricAnalyzer :: calcTotalLines ( ) { 
+
+  Executable: 
+ totalLines = _ Repos - > lineCount ( ) ; 
+
+  Function calcTotalLines, lines = 3 , startLine = 78 , endLine = 80 , complexity = 1
+
+  FuncDef: 
+ void MetricAnalyzer :: functionSummary ( ) { 
+
+  Declaration: 
+ const char separator = ' ' ; 
+
+  Declaration: 
+ const int nameWidth = 25 ; 
+
+  Declaration: 
+ const int numWidth = 10 ; 
+
+  Declaration: 
+ std :: vector < ASTNode > functions = allFunctions ; 
+
+  Declaration: 
+ SH :: title ( "Functions Summary" ) ; 
+
+  Declaration: 
+ std :: cout << std :: endl ; 
+
+  Executable: 
+ std :: cout << std :: endl ; 
+
+  Declaration: 
+ std :: cout << std :: left << std :: setw ( 49 ) << std :: setfill ( '*' ) << "" << std :: endl ; 
+
+  Executable: 
+ std :: cout << std :: left << std :: setw ( 49 ) << std :: setfill ( '*' ) << "" << std :: endl ; 
+
+  Declaration: 
+ std :: cout << "* " << std :: left << std :: setw ( numWidth ) << std :: setfill ( separator ) << "Cyclo" << std :: left << std :: setw ( numWidth ) << std :: setfill ( separator ) << "Lines" << std :: left << std :: setw ( nameWidth ) << std :: setfill ( separator ) << "Function Name" << " *" << std :: endl ; 
+
+  Executable: 
+ std :: cout << "* " << std :: left << std :: setw ( numWidth ) << std :: setfill ( separator ) << "Cyclo" << std :: left << std :: setw ( numWidth ) << std :: setfill ( separator ) << "Lines" << std :: left << std :: setw ( nameWidth ) << std :: setfill ( separator ) << "Function Name" << " *" << std :: endl ; 
+
+  Declaration: 
+ std :: cout << "* " << std :: left << std :: setw ( numWidth ) << std :: setfill ( separator ) << functions [ i ] . getCC ( ) << std :: left << std :: setw ( numWidth ) << std :: setfill ( separator ) << functions [ i ] . getLineCount ( ) << std :: left << std :: setw ( nameWidth ) << std :: setfill ( separator ) << functions [ i ] . getName ( ) << " *" << std :: endl ; 
+
+  Executable: 
+ std :: cout << "* " << std :: left << std :: setw ( numWidth ) << std :: setfill ( separator ) << functions [ i ] . getCC ( ) << std :: left << std :: setw ( numWidth ) << std :: setfill ( separator ) << functions [ i ] . getLineCount ( ) << std :: left << std :: setw ( nameWidth ) << std :: setfill ( separator ) << functions [ i ] . getName ( ) << " *" << std :: endl ; 
+
+  Declaration: 
+ std :: cout << std :: left << std :: setw ( 49 ) << std :: setfill ( '*' ) << "" << std :: endl ; 
+
+  Executable: 
+ std :: cout << std :: left << std :: setw ( 49 ) << std :: setfill ( '*' ) << "" << std :: endl ; 
+
+  Function functionSummary, lines = 20 , startLine = 83 , endLine = 102 , complexity = 2
+
+  FuncDef: 
+ void MetricAnalyzer :: moduleSummary ( ) { 
+
+  Declaration: 
+ SH :: title ( "Module Summary" ) ; 
+
+  Declaration: 
+ std :: cout << std :: endl << std :: left << std :: setw ( 38 ) << std :: setfill ( '*' ) << "" ; 
+
+  Executable: 
+ std :: cout << std :: endl << std :: left << std :: setw ( 38 ) << std :: setfill ( '*' ) << "" ; 
+
+  Declaration: 
+ std :: cout << std :: endl << "* " << std :: left << std :: setw ( 25 ) << std :: setfill ( ' ' ) << " Lines of Function Code" << " : " << std :: left << std :: setw ( 6 ) << std :: setfill ( ' ' ) << getTotalFLines ( ) << " *" ; 
+
+  Executable: 
+ std :: cout << std :: endl << "* " << std :: left << std :: setw ( 25 ) << std :: setfill ( ' ' ) << " Lines of Function Code" << " : " << std :: left << std :: setw ( 6 ) << std :: setfill ( ' ' ) << getTotalFLines ( ) << " *" ; 
+
+  Declaration: 
+ std :: cout << std :: endl << "* " << std :: left << std :: setw ( 25 ) << std :: setfill ( ' ' ) << " Lines of Code Text" << " : " << std :: left << std :: setw ( 6 ) << std :: setfill ( ' ' ) << getTotalLines ( ) << " *" ; 
+
+  Executable: 
+ std :: cout << std :: endl << "* " << std :: left << std :: setw ( 25 ) << std :: setfill ( ' ' ) << " Lines of Code Text" << " : " << std :: left << std :: setw ( 6 ) << std :: setfill ( ' ' ) << getTotalLines ( ) << " *" ; 
+
+  Declaration: 
+ std :: cout << std :: endl << "* " << std :: left << std :: setw ( 25 ) << std :: setfill ( ' ' ) << " Cyclometic Complexity" << " : " << std :: left << std :: setw ( 6 ) << std :: setfill ( ' ' ) << getTotalFComplexity ( ) << " *" ; 
+
+  Executable: 
+ std :: cout << std :: endl << "* " << std :: left << std :: setw ( 25 ) << std :: setfill ( ' ' ) << " Cyclometic Complexity" << " : " << std :: left << std :: setw ( 6 ) << std :: setfill ( ' ' ) << getTotalFComplexity ( ) << " *" ; 
+
+  Declaration: 
+ std :: cout << std :: endl << std :: left << std :: setw ( 38 ) << std :: setfill ( '*' ) << "" << std :: endl ; 
+
+  Executable: 
+ std :: cout << std :: endl << std :: left << std :: setw ( 38 ) << std :: setfill ( '*' ) << "" << std :: endl ; 
+
+  Declaration: 
+ std :: cout << std :: endl ; 
+
+  Executable: 
+ std :: cout << std :: endl ; 
+
+  Function moduleSummary, lines = 12 , startLine = 105 , endLine = 116 , complexity = 1
+
+  FuncDef: 
+ void MetricAnalyzer :: showAST ( ) { 
+
+  Declaration: 
+ SH :: title ( "Abstract Syntax Tree" ) ; 
+
+  Declaration: 
+ std :: cout << std :: endl ; 
+
+  Executable: 
+ std :: cout << std :: endl ; 
+
+  Declaration: 
+ _ Repos - > getAST ( ) - > showAST ( ) ; 
+
+  Executable: 
+ _ Repos - > getAST ( ) - > showAST ( ) ; 
+
+  Declaration: 
+ std :: cout << std :: endl ; 
+
+  Executable: 
+ std :: cout << std :: endl ; 
+
+  Function showAST, lines = 6 , startLine = 119 , endLine = 124 , complexity = 1
+
+  FuncDef: 
+ size _ t MetricAnalyzer :: getMaxFComplexity ( ) { 
+
+  Executable: 
+ return maxFComplexity ; 
+
+  Function getMaxFComplexity, lines = 3 , startLine = 127 , endLine = 129 , complexity = 1
+
+  FuncDef: 
+ size _ t MetricAnalyzer :: getMaxFLines ( ) { 
+
+  Executable: 
+ return maxFLines ; 
+
+  Function getMaxFLines, lines = 3 , startLine = 132 , endLine = 134 , complexity = 1
+
+  FuncDef: 
+ std :: set < std :: tuple < size _ t , size _ t , std :: string >> MetricAnalyzer :: getFaultyFunction ( ) { 
+
+  Executable: 
+ return faultyFunctions ; 
+
+  Function getFaultyFunction, lines = 3 , startLine = 137 , endLine = 139 , complexity = 1
+
+  FuncDef: 
+ void MetricAnalyzer :: updateRoot ( ) { 
+
+  Declaration: 
+ ASTNode * root = _ Repos - > getAST ( ) - > getRoot ( ) ; 
+
+  Declaration: 
+ root - > setLineEnd ( totalLines ) ; 
+
+  Executable: 
+ root - > setLineEnd ( totalLines ) ; 
+
+  Declaration: 
+ root - > setLineCount ( root - > getLineEnd ( ) - root - > getLineStart ( ) + 1 ) ; 
+
+  Executable: 
+ root - > setLineCount ( root - > getLineEnd ( ) - root - > getLineStart ( ) + 1 ) ; 
+
+  Declaration: 
+ size _ t cc = 1 ; 
+
+  Executable: 
+ size _ t cc = 1 ; 
+
+  Declaration: 
+ for ( size _ t i = 0 ; i < root - > getChildren ( ) - > size ( ) ; i ++ ) cc += root - > getChildren ( ) - > at ( i ) - > getCC ( ) ; 
+
+  Executable: 
+ for ( size _ t i = 0 ; i < root - > getChildren ( ) - > size ( ) ; i ++ ) cc += root - > getChildren ( ) - > at ( i ) - > getCC ( ) ; 
+
+  Declaration: 
+ root - > setCC ( cc ) ; 
+
+  Executable: 
+ root - > setCC ( cc ) ; 
+
+  Function updateRoot, lines = 9 , startLine = 142 , endLine = 150 , complexity = 1
+
+  FuncDef: 
+ bool MetricAnalyzer :: Analyze ( std :: string filePath ) { 
+
+  Declaration: 
+ std :: string fileSpec = FileSystem :: Path :: getFullFileSpec ( filePath ) ; 
+
+  Declaration: 
+ std :: string name = FileSystem :: Path :: getName ( fileSpec ) ; 
+
+  Declaration: 
+ std :: string msg = "Processing file " + fileSpec ; 
+
+  Declaration: 
+ SH :: title ( msg ) ; 
+
+  Declaration: 
+ std :: cout << std :: endl ; 
+
+  Executable: 
+ std :: cout << std :: endl ; 
+
+  Declaration: 
+ std :: string output = outputDir + "Analyzer_" + SH :: changeExtenssion ( name , ".txt" ) ; 
+
+  Declaration: 
+ FILE * pfile = nullptr ; 
+
+  Executable: 
+ pfile = freopen ( output . c _ str ( ) , "w" , stdout ) ; 
+
+  Declaration: 
+ ConfigParseToConsole configure ; 
+
+  Declaration: 
+ Parser * pParser = configure . Build ( ) ; 
+
+  Executable: 
+ pfile = freopen ( "CON" , "w" , stdout ) ; 
+
+  Declaration: 
+ std :: cout << "\n  could not open file " << fileSpec << std :: endl ; 
+
+  Executable: 
+ std :: cout << "\n  could not open file " << fileSpec << std :: endl ; 
+
+  Executable: 
+ return false ; 
+
+  Executable: 
+ pfile = freopen ( "CON" , "w" , stdout ) ; 
+
+  Declaration: 
+ std :: cout << "\n\n  Parser not built\n\n" ; 
+
+  Executable: 
+ std :: cout << "\n\n  Parser not built\n\n" ; 
+
+  Executable: 
+ return false ; 
+
+  Declaration: 
+ while ( pParser - > next ( ) ) pParser - > parse ( ) ; 
+
+  Executable: 
+ while ( pParser - > next ( ) ) pParser - > parse ( ) ; 
+
+  Executable: 
+ freopen ( "CON" , "w" , stdout ) ; 
+
+  Declaration: 
+ std :: cout << "Intermediate Output is stored at  " << FileSystem :: Path :: getFullFileSpec ( output ) << "\n" ; 
+
+  Executable: 
+ std :: cout << "Intermediate Output is stored at  " << FileSystem :: Path :: getFullFileSpec ( output ) << "\n" ; 
+
+  Declaration: 
+ setRepository ( Repository :: getInstance ( ) ) ; 
+
+  Executable: 
+ showAST ( ) ; 
+
+  Executable: 
+ functionSummary ( ) ; 
+
+  Executable: 
+ moduleSummary ( ) ; 
+
+  Executable: 
+ return true ; 
+
+  Executable: 
+ freopen ( "CON" , "w" , stdout ) ; 
+
+  Declaration: 
+ std :: cout << "\n\n    " << ex . what ( ) << "\n\n" ; 
+
+  Executable: 
+ std :: cout << "\n\n    " << ex . what ( ) << "\n\n" ; 
+
+  Executable: 
+ return true ; 
+
+  Function Analyze, lines = 47 , startLine = 153 , endLine = 199 , complexity = 6
+
+  FuncDef: 
+ # ifdef TEST _ METRIC _ ANALYZER 
+
+  FuncDef: 
+ int main ( int argc , char * argv [ ] ) { 
+
+  Declaration: 
+ std :: cout << "\n  please enter name of file to process on command line\n\n" ; 
+
+  Executable: 
+ std :: cout << "\n  please enter name of file to process on command line\n\n" ; 
+
+  Executable: 
+ return 1 ; 
+
+  Declaration: 
+ MetricAnalyzer MA ; 
+
+  Declaration: 
+ MA . Analyze ( argv [ 1 ] ) ; 
+
+  Executable: 
+ MA . Analyze ( argv [ 1 ] ) ; 
+
+  Declaration: 
+ std :: cout << "\n" ; 
+
+  Executable: 
+ std :: cout << "\n" ; 
+
+  Function main, lines = 11 , startLine = 204 , endLine = 214 , complexity = 2

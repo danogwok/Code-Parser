@@ -1,0 +1,63 @@
+
+  FuncDef: 
+ # include "Test.h" 
+
+  FuncDef: 
+ void testFun ( int a , std :: string b ) { 
+
+  Declaration: 
+ std :: cout << b [ i ] << " " ; 
+
+  Executable: 
+ std :: cout << b [ i ] << " " ; 
+
+  Function testFun, lines = 7 , startLine = 6 , endLine = 12 , complexity = 3
+
+  FuncDef: 
+ std :: string testLambda ( ) { 
+
+  FuncDef: 
+ name = [ & name , & pTc ] ( ) - > std :: string { 
+
+  Declaration: 
+ size _ t index = pTc - > find ( "operator" ) ; 
+
+  Executable: 
+ size _ t index = pTc - > find ( "operator" ) ; 
+
+  Executable: 
+ name = "" ; 
+
+  Declaration: 
+ while ( ( * pTc ) [ index ] ! = "(" ) name += ( * pTc ) [ index ++ ] ; 
+
+  Executable: 
+ while ( ( * pTc ) [ index ] ! = "(" ) name += ( * pTc ) [ index ++ ] ; 
+
+  Executable: 
+ return name ; 
+
+  Declaration: 
+ ( ) ; 
+
+  Function testLambda, lines = 11 , startLine = 14 , endLine = 24 , complexity = 3
+
+  FuncDef: 
+ Token & SemiExp :: operator [ ] ( size _ t n ) { 
+
+  Declaration: 
+ throw ( std :: invalid _ argument ( "index out of range" ) ) ; 
+
+  Declaration: 
+ return _ tokens [ n ] ; 
+
+  Executable: 
+ return _ tokens [ n ] ; 
+
+  Function operator[], lines = 6 , startLine = 27 , endLine = 32 , complexity = 2
+
+  Declaration: 
+ static std :: map < std :: string , int > specialChars ; 
+
+  Declaration: 
+ std :: map < std :: string , int > Test :: specialChars = { 

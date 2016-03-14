@@ -1,0 +1,125 @@
+
+  FuncDef: 
+ # ifndef CONFIGUREPARSER _ H 
+
+  FuncDef: 
+ # define CONFIGUREPARSER _ H 
+
+  FuncDef: 
+ # include < fstream > 
+
+  FuncDef: 
+ # include "Parser.h" 
+
+  FuncDef: 
+ # include "../SemiExp/SemiExp.h" 
+
+  FuncDef: 
+ # include "../Tokenizer/Tokenizer.h" 
+
+  FuncDef: 
+ # include "ActionsAndRules.h" 
+
+  FuncDef: 
+ ConfigParseToConsole ( ) { 
+
+  Function ConfigParseToConsole, lines = 1 , startLine = 64 , endLine = 64 , complexity = 1
+
+  Declaration: 
+ ~ ConfigParseToConsole ( ) ; 
+
+  Declaration: 
+ bool Attach ( const std : : string & name , bool isFile = true ) ; 
+
+  Declaration: 
+ Parser * Build ( ) ; 
+
+  Declaration: 
+ void intializeObjects ( ) ; 
+
+  Declaration: 
+ void intializeScopeRules ( ) ; 
+
+  Declaration: 
+ void intializeOtherRules ( ) ; 
+
+  Declaration: 
+ std : : ifstream * pIn ; 
+
+  Declaration: 
+ Scanner : : Toker * pToker ; 
+
+  Executable: 
+ Scanner : : Toker * pToker ; 
+
+  Declaration: 
+ Scanner : : SemiExp * pSemi ; 
+
+  Executable: 
+ Scanner : : SemiExp * pSemi ; 
+
+  Declaration: 
+ Parser * pParser ; 
+
+  Declaration: 
+ Repository * pRepo ; 
+
+  Declaration: 
+ BeginningOfScope * pBeginningOfScope ; 
+
+  Declaration: 
+ HandlePush * pHandlePush ; 
+
+  Declaration: 
+ EndOfScope * pEndOfScope ; 
+
+  Declaration: 
+ HandlePop * pHandlePop ; 
+
+  Declaration: 
+ FunctionDefinition * pFunctionDefinition ; 
+
+  Declaration: 
+ PushFunction * pPushFunction ; 
+
+  Declaration: 
+ PrintFunction * pPrintFunction ; 
+
+  Declaration: 
+ Declaration * pDeclaration ; 
+
+  Declaration: 
+ ShowDeclaration * pShowDeclaration ; 
+
+  Declaration: 
+ Executable * pExecutable ; 
+
+  Declaration: 
+ ShowExecutable * pShowExecutable ; 
+
+  Declaration: 
+ ControlDefinition * pControlDefinction ; 
+
+  Declaration: 
+ PushControls * pPushControls ; 
+
+  Declaration: 
+ TypeDefinition * pTypeDefinition ; 
+
+  Declaration: 
+ PushTypes * pPushTypes ; 
+
+  Declaration: 
+ PreprocStatement * pPreproc ; 
+
+  Declaration: 
+ PrintPreproc * pPrintPreproc ; 
+
+  Executable: 
+ ConfigParseToConsole ( const ConfigParseToConsole & ) = delete ; 
+
+  Declaration: 
+ ConfigParseToConsole & operator = ( const ConfigParseToConsole & ) = delete ; 
+
+  FuncDef: 
+ # endif 

@@ -1,0 +1,556 @@
+
+  FuncDef: 
+ # define _ CRT _ SECURE _ NO _ DEPRECATE 
+
+  FuncDef: 
+ # define NO _ WARN _ MBCS _ MFC _ DEPRECATION 
+
+  FuncDef: 
+ # include < io . h > 
+
+  FuncDef: 
+ # include < sys / types . h > 
+
+  FuncDef: 
+ # include < sys / stat . h > 
+
+  FuncDef: 
+ # include < fstream > 
+
+  FuncDef: 
+ # include < iostream > 
+
+  FuncDef: 
+ # include < algorithm > 
+
+  FuncDef: 
+ # include < string > 
+
+  FuncDef: 
+ # include < unordered _ map > 
+
+  FuncDef: 
+ # include < exception > 
+
+  FuncDef: 
+ # include "SemiExp.h" 
+
+  FuncDef: 
+ # include "../Tokenizer/Tokenizer.h" 
+
+  Declaration: 
+ using namespace Scanner ; 
+
+  Executable: 
+ using namespace Scanner ; 
+
+  FuncDef: 
+ SemiExp :: SemiExp ( Toker * pToker ) : _ pToker ( pToker ) { 
+
+  Declaration: 
+ if ( _ access ( inputDir . c _ str ( ) , 0 ) ! = 0 ) inputDir = "." + inputDir ; 
+
+  Executable: 
+ if ( _ access ( inputDir . c _ str ( ) , 0 ) ! = 0 ) inputDir = "." + inputDir ; 
+
+  Declaration: 
+ if ( _ access ( outputDir . c _ str ( ) , 0 ) ! = 0 ) outputDir = "." + outputDir ; 
+
+  Executable: 
+ if ( _ access ( outputDir . c _ str ( ) , 0 ) ! = 0 ) outputDir = "." + outputDir ; 
+
+  Function SemiExp, lines = 6 , startLine = 35 , endLine = 40 , complexity = 1
+here
+  Declaration: 
+ std :: map < Token , int > SemiExp :: _ terminationtokens = { 
+herehereherehereherehereherehere
+  Declaration: 
+ Token SemiExp :: _ firstToken = "" ; 
+
+  Executable: 
+ Token SemiExp :: _ firstToken = "" ; 
+
+  Declaration: 
+ Token SemiExp :: _ prevToken = "" ; 
+
+  Executable: 
+ Token SemiExp :: _ prevToken = "" ; 
+
+  Declaration: 
+ bool SemiExp :: _ startFlag = true ; 
+
+  Executable: 
+ bool SemiExp :: _ startFlag = true ; 
+
+  Declaration: 
+ bool SemiExp :: _ forFlag = false ; 
+
+  Executable: 
+ bool SemiExp :: _ forFlag = false ; 
+
+  Declaration: 
+ bool SemiExp :: _ hashFlag = false ; 
+
+  Executable: 
+ bool SemiExp :: _ hashFlag = false ; 
+
+  Declaration: 
+ std :: string SemiExp :: inputDir = "./Inputs/" ; 
+
+  Executable: 
+ std :: string SemiExp :: inputDir = "./Inputs/" ; 
+
+  Declaration: 
+ std :: string SemiExp :: outputDir = "./Outputs/" ; 
+
+  Executable: 
+ std :: string SemiExp :: outputDir = "./Outputs/" ; 
+
+  FuncDef: 
+ bool SemiExp :: get ( bool clear ) { 
+
+  Declaration: 
+ if ( _ pToker == nullptr ) throw ( std :: logic _ error ( "no Toker reference" ) ) ; 
+
+  Executable: 
+ if ( _ pToker == nullptr ) throw ( std :: logic _ error ( "no Toker reference" ) ) ; 
+
+  Declaration: 
+ if ( clear ) _ tokens . clear ( ) ; 
+
+  Executable: 
+ if ( clear ) _ tokens . clear ( ) ; 
+
+  Executable: 
+ setDefaultFlags ( ) ; 
+
+  Declaration: 
+ std :: string token = "" ; 
+
+  Declaration: 
+ int count = 0 ; 
+
+  Declaration: 
+ _ prevToken = token ; 
+
+  Executable: 
+ token = _ pToker - > getTok ( ) ; 
+
+  Declaration: 
+ _ firstToken = token ; 
+
+  Declaration: 
+ _ startFlag = false ; 
+
+  Declaration: 
+ if ( token == "" ) break ; 
+
+  Executable: 
+ if ( token == "" ) break ; 
+
+  Declaration: 
+ _ forFlag = token == "for" ? true : _ forFlag ; 
+
+  Declaration: 
+ _ hashFlag = token == "#" ? true : _ hashFlag ; 
+
+  Declaration: 
+ push _ back ( token ) ; 
+
+  Executable: 
+ push _ back ( token ) ; 
+
+  Declaration: 
+ if ( _ forFlag && exception3 ( token , count ) ) continue ; 
+
+  Executable: 
+ if ( _ forFlag && exception3 ( token , count ) ) continue ; 
+
+  Executable: 
+ setDefaultFlags ( ) ; 
+
+  Executable: 
+ return true ; 
+
+  Executable: 
+ setDefaultFlags ( ) ; 
+
+  Executable: 
+ return false ; 
+
+  Function get, lines = 31 , startLine = 52 , endLine = 82 , complexity = 4
+
+  FuncDef: 
+ bool Scanner :: SemiExp :: exception2 ( Token currToken ) { 
+
+  Declaration: 
+ if ( currToken == ":" && ( _ prevToken == "public" || _ prevToken == "protected" || _ prevToken == "private" ) ) return true ; 
+
+  Executable: 
+ if ( currToken == ":" && ( _ prevToken == "public" || _ prevToken == "protected" || _ prevToken == "private" ) ) return true ; 
+
+  Executable: 
+ return false ; 
+
+  Function exception2, lines = 5 , startLine = 86 , endLine = 90 , complexity = 1
+
+  FuncDef: 
+ bool Scanner :: SemiExp :: exception3 ( Token currToken , int & count ) { 
+
+  Executable: 
+ count ++ ; 
+
+  Declaration: 
+ if ( count < = 2 ) return true ; 
+
+  Executable: 
+ if ( count < = 2 ) return true ; 
+
+  Executable: 
+ return false ; 
+
+  Function exception3, lines = 8 , startLine = 94 , endLine = 101 , complexity = 2
+
+  FuncDef: 
+ bool Scanner :: SemiExp :: isComment ( Token currToken ) { 
+
+  Declaration: 
+ if ( ( currToken [ 0 ] == '/' && currToken [ 1 ] == '/' ) || ( currToken [ 0 ] == '/' && currToken [ 1 ] == '*' ) ) return true ; 
+
+  Executable: 
+ if ( ( currToken [ 0 ] == '/' && currToken [ 1 ] == '/' ) || ( currToken [ 0 ] == '/' && currToken [ 1 ] == '*' ) ) return true ; 
+
+  Executable: 
+ return false ; 
+
+  Function isComment, lines = 5 , startLine = 105 , endLine = 109 , complexity = 1
+
+  FuncDef: 
+ void Scanner :: SemiExp :: setDefaultFlags ( ) { 
+
+  Declaration: 
+ _ firstToken = "" ; 
+
+  Declaration: 
+ _ prevToken = "" ; 
+
+  Declaration: 
+ _ startFlag = true ; 
+
+  Declaration: 
+ _ forFlag = false ; 
+
+  Declaration: 
+ _ hashFlag = false ; 
+
+  Function setDefaultFlags, lines = 7 , startLine = 113 , endLine = 119 , complexity = 1
+
+  FuncDef: 
+ Token & SemiExp :: operator [ ] ( size _ t n ) { 
+
+  Declaration: 
+ if ( n < 0 || n > = _ tokens . size ( ) ) throw ( std :: invalid _ argument ( "index out of range" ) ) ; 
+
+  Executable: 
+ if ( n < 0 || n > = _ tokens . size ( ) ) throw ( std :: invalid _ argument ( "index out of range" ) ) ; 
+
+  Declaration: 
+ return _ tokens [ n ] ; 
+
+  Executable: 
+ return _ tokens [ n ] ; 
+
+  Function operator[], lines = 5 , startLine = 123 , endLine = 127 , complexity = 1
+
+  FuncDef: 
+ size _ t SemiExp :: length ( ) { 
+
+  Declaration: 
+ return _ tokens . size ( ) ; 
+
+  Executable: 
+ return _ tokens . size ( ) ; 
+
+  Function length, lines = 3 , startLine = 131 , endLine = 133 , complexity = 1
+
+  FuncDef: 
+ void SemiExp :: printSemiExp ( bool showNewLines ) { 
+
+  Declaration: 
+ std :: cout << show ( showNewLines ) ; 
+
+  Executable: 
+ std :: cout << show ( showNewLines ) ; 
+
+  Function printSemiExp, lines = 3 , startLine = 137 , endLine = 139 , complexity = 1
+
+  FuncDef: 
+ std :: string Scanner :: SemiExp :: show ( bool showNewLines ) { 
+
+  Declaration: 
+ std :: string result = "" ; 
+
+  Executable: 
+ result = result + "\n " ; 
+
+  Executable: 
+ trimFront ( ) ; 
+
+  Declaration: 
+ if ( token == "\n" ) token = "newline" ; 
+
+  Executable: 
+ if ( token == "\n" ) token = "newline" ; 
+
+  Declaration: 
+ result += token + " " ; 
+
+  Executable: 
+ result += token + " " ; 
+
+  Executable: 
+ result = result + "\n" ; 
+
+  Executable: 
+ return result ; 
+
+  Function show, lines = 14 , startLine = 142 , endLine = 155 , complexity = 3
+
+  FuncDef: 
+ size _ t Scanner :: SemiExp :: find ( const Token & tok ) { 
+
+  Declaration: 
+ for ( size _ t i = 0 ; i < length ( ) ; i ++ ) if ( _ tokens [ i ] == tok ) return i ; 
+
+  Executable: 
+ for ( size _ t i = 0 ; i < length ( ) ; i ++ ) if ( _ tokens [ i ] == tok ) return i ; 
+
+  Declaration: 
+ return ( length ( ) + 1 ) ; 
+
+  Executable: 
+ return ( length ( ) + 1 ) ; 
+
+  Function find, lines = 6 , startLine = 159 , endLine = 164 , complexity = 1
+
+  FuncDef: 
+ void Scanner :: SemiExp :: push _ back ( const std :: string & tok ) { 
+
+  Declaration: 
+ _ tokens . push _ back ( tok ) ; 
+
+  Executable: 
+ _ tokens . push _ back ( tok ) ; 
+
+  Function back, lines = 3 , startLine = 168 , endLine = 170 , complexity = 1
+
+  FuncDef: 
+ bool Scanner :: SemiExp :: merge ( const Token & firstTok , const Token & secondTok ) { 
+
+  Executable: 
+ return true ; 
+
+  Function merge, lines = 3 , startLine = 174 , endLine = 176 , complexity = 1
+
+  FuncDef: 
+ bool Scanner :: SemiExp :: remove ( const Token & tok ) { 
+
+  Declaration: 
+ std :: vector < Token > :: iterator it ; 
+
+  Executable: 
+ std :: vector < Token > :: iterator it ; 
+
+  Declaration: 
+ _ tokens . erase ( it ) ; 
+
+  Executable: 
+ _ tokens . erase ( it ) ; 
+
+  Executable: 
+ return true ; 
+
+  Executable: 
+ return false ; 
+
+  Function remove, lines = 10 , startLine = 180 , endLine = 189 , complexity = 3
+
+  FuncDef: 
+ bool Scanner :: SemiExp :: remove ( size _ t index ) { 
+
+  Declaration: 
+ _ tokens . erase ( _ tokens . begin ( ) + i ) ; 
+
+  Executable: 
+ _ tokens . erase ( _ tokens . begin ( ) + i ) ; 
+
+  Executable: 
+ return true ; 
+
+  Executable: 
+ return false ; 
+
+  Function remove, lines = 9 , startLine = 193 , endLine = 201 , complexity = 3
+
+  FuncDef: 
+ void Scanner :: SemiExp :: toLower ( ) { 
+
+  Declaration: 
+ std :: vector < std :: string > :: iterator it ; 
+
+  Executable: 
+ std :: vector < std :: string > :: iterator it ; 
+
+  Declaration: 
+ for ( it = _ tokens . begin ( ) ; it ! = _ tokens . end ( ) ; it ++ ) std :: transform ( ( * it ) . begin ( ) , ( * it ) . end ( ) , ( * it ) . begin ( ) , :: tolower ) ; 
+
+  Executable: 
+ for ( it = _ tokens . begin ( ) ; it ! = _ tokens . end ( ) ; it ++ ) std :: transform ( ( * it ) . begin ( ) , ( * it ) . end ( ) , ( * it ) . begin ( ) , :: tolower ) ; 
+
+  Function toLower, lines = 5 , startLine = 205 , endLine = 209 , complexity = 1
+
+  FuncDef: 
+ void Scanner :: SemiExp :: trimFront ( ) { 
+
+  Declaration: 
+ while ( length ( ) > 0 && _ tokens [ 0 ] == "\n" ) remove ( "\n" ) ; 
+
+  Executable: 
+ while ( length ( ) > 0 && _ tokens [ 0 ] == "\n" ) remove ( "\n" ) ; 
+
+  Function trimFront, lines = 4 , startLine = 213 , endLine = 216 , complexity = 1
+
+  FuncDef: 
+ void Scanner :: SemiExp :: clear ( ) { 
+
+  Declaration: 
+ _ tokens . clear ( ) ; 
+
+  Executable: 
+ _ tokens . clear ( ) ; 
+
+  Function clear, lines = 3 , startLine = 220 , endLine = 222 , complexity = 1
+
+  FuncDef: 
+ bool Scanner :: SemiExp :: printAllExpression ( Toker * toker , std :: string input , std :: string getComments , bool storeText ) { 
+
+  Executable: 
+ clear ( ) ; 
+
+  Declaration: 
+ toker - > reset ( ) ; 
+
+  Executable: 
+ toker - > reset ( ) ; 
+
+  Declaration: 
+ std :: string output = outputDir + "Semi_" + input ; 
+
+  Executable: 
+ input = inputDir + input ; 
+
+  Declaration: 
+ FILE * pfile = nullptr ; 
+
+  Declaration: 
+ if ( storeText ) pfile = freopen ( output . c _ str ( ) , "w" , stdout ) ; 
+
+  Executable: 
+ if ( storeText ) pfile = freopen ( output . c _ str ( ) , "w" , stdout ) ; 
+
+  Declaration: 
+ std :: fstream in ( input ) ; 
+
+  Declaration: 
+ std :: cout << "\n  can't open file " << input << "\n\n" ; 
+
+  Executable: 
+ std :: cout << "\n  can't open file " << input << "\n\n" ; 
+
+  Executable: 
+ return false ; 
+
+  Declaration: 
+ toker - > attach ( & in ) ; 
+
+  Executable: 
+ toker - > attach ( & in ) ; 
+
+  Declaration: 
+ toker - > setComments ( getComments ) ; 
+
+  Executable: 
+ toker - > setComments ( getComments ) ; 
+
+  Declaration: 
+ _ pToker = toker ; 
+
+  Declaration: 
+ std :: cout << "\n  -- semiExpression --" ; 
+
+  Executable: 
+ std :: cout << "\n  -- semiExpression --" ; 
+
+  Executable: 
+ printSemiExp ( ) ; 
+
+  Declaration: 
+ std :: cout << "\n  -- semiExpression --" ; 
+
+  Executable: 
+ std :: cout << "\n  -- semiExpression --" ; 
+
+  Executable: 
+ printSemiExp ( ) ; 
+
+  Declaration: 
+ std :: cout << "\n\n" ; 
+
+  Executable: 
+ std :: cout << "\n\n" ; 
+
+  Executable: 
+ pfile = freopen ( "CON" , "w" , stdout ) ; 
+
+  Declaration: 
+ std :: cout << "Read output file from : \"" << output << "\".\n" ; 
+
+  Executable: 
+ std :: cout << "Read output file from : \"" << output << "\".\n" ; 
+
+  Declaration: 
+ toker - > reset ( ) ; 
+
+  Executable: 
+ toker - > reset ( ) ; 
+
+  Executable: 
+ return true ; 
+
+  Function printAllExpression, lines = 35 , startLine = 226 , endLine = 260 , complexity = 5
+
+  FuncDef: 
+ # ifdef TEST _ SEMIEXPRESSION 
+
+  FuncDef: 
+ int main ( ) { 
+
+  Declaration: 
+ Toker toker ; 
+
+  Declaration: 
+ SemiExp semi ; 
+
+  Declaration: 
+ std :: string fileSpec = "Req7_8.txt" ; 
+
+  Declaration: 
+ semi . printAllExpression ( & toker , fileSpec , "true" , false ) ; 
+
+  Executable: 
+ semi . printAllExpression ( & toker , fileSpec , "true" , false ) ; 
+
+  Executable: 
+ return 0 ; 
+
+  Function main, lines = 7 , startLine = 264 , endLine = 270 , complexity = 1

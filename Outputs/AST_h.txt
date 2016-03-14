@@ -1,0 +1,188 @@
+
+  FuncDef: 
+ # ifndef AST _ H 
+
+  FuncDef: 
+ # define AST _ H 
+
+  FuncDef: 
+ # include < string > 
+
+  FuncDef: 
+ # include < vector > 
+
+  FuncDef: 
+ # include < sstream > 
+
+  FuncDef: 
+ # include < set > 
+
+  FuncDef: 
+ ASTNode ( ) { 
+
+  Declaration: 
+ _ children = new std : : vector < ASTNode * > ( ) ; 
+
+  Function ASTNode, lines = 3 , startLine = 41 , endLine = 43 , complexity = 1
+
+  FuncDef: 
+ ~ ASTNode ( ) { 
+
+  Function ASTNode, lines = 1 , startLine = 44 , endLine = 44 , complexity = 1
+
+  Declaration: 
+ std : : string show ( ) ; 
+
+  Declaration: 
+ void setType ( std : : string type ) ; 
+
+  Declaration: 
+ std : : string getType ( ) ; 
+
+  Declaration: 
+ void setName ( std : : string name ) ; 
+
+  Declaration: 
+ std : : string getName ( ) ; 
+
+  Declaration: 
+ void setLineCount ( size _ t linecount ) ; 
+
+  Declaration: 
+ size _ t getLineCount ( ) ; 
+
+  Executable: 
+ size _ t getLineCount ( ) ; 
+
+  Declaration: 
+ void setLineStart ( size _ t linestart ) ; 
+
+  Declaration: 
+ size _ t getLineStart ( ) ; 
+
+  Executable: 
+ size _ t getLineStart ( ) ; 
+
+  Declaration: 
+ void setLineEnd ( size _ t lineend ) ; 
+
+  Declaration: 
+ size _ t getLineEnd ( ) ; 
+
+  Executable: 
+ size _ t getLineEnd ( ) ; 
+
+  Declaration: 
+ void setCC ( size _ t cc ) ; 
+
+  Declaration: 
+ size _ t getCC ( ) ; 
+
+  Executable: 
+ size _ t getCC ( ) ; 
+
+  Declaration: 
+ void addChild ( ASTNode * node ) ; 
+
+  Declaration: 
+ void addChildren ( std : : vector < ASTNode * > * children ) ; 
+
+  Declaration: 
+ std : : vector < ASTNode * > * getChildren ( ) ; 
+
+  Declaration: 
+ std : : string _ type ; 
+
+  Executable: 
+ std : : string _ type ; 
+
+  Declaration: 
+ std : : string _ name ; 
+
+  Executable: 
+ std : : string _ name ; 
+
+  Declaration: 
+ size _ t _ lineCount ; 
+
+  Executable: 
+ size _ t _ lineCount ; 
+
+  Declaration: 
+ size _ t _ lineStart ; 
+
+  Executable: 
+ size _ t _ lineStart ; 
+
+  Declaration: 
+ size _ t _ lineEnd ; 
+
+  Executable: 
+ size _ t _ lineEnd ; 
+
+  Declaration: 
+ size _ t _ cc ; 
+
+  Executable: 
+ size _ t _ cc ; 
+
+  Declaration: 
+ std : : vector < ASTNode * > * _ children ; 
+
+  Executable: 
+ std : : vector < ASTNode * > * _ children ; 
+
+  FuncDef: 
+ AST ( ) { 
+
+  Declaration: 
+ if ( _ root = = nullptr ) _ root = new ASTNode ( ) ; 
+
+  Executable: 
+ if ( _ root = = nullptr ) _ root = new ASTNode ( ) ; 
+
+  Function AST, lines = 4 , startLine = 76 , endLine = 79 , complexity = 1
+
+  FuncDef: 
+ ~ AST ( ) { 
+
+  Function AST, lines = 2 , startLine = 80 , endLine = 81 , complexity = 1
+
+  Declaration: 
+ void setRoot ( ASTNode * root ) ; 
+
+  Declaration: 
+ ASTNode * getRoot ( ) ; 
+
+  Declaration: 
+ void deleteChild ( ASTNode * node ) ; 
+
+  Declaration: 
+ void AST : : deleteChild ( ASTNode * node , ASTNode * deleteNode ) ; 
+
+  Executable: 
+ void AST : : deleteChild ( ASTNode * node , ASTNode * deleteNode ) ; 
+
+  Declaration: 
+ void showAST ( ) ; 
+
+  Declaration: 
+ void showASTHelp ( ASTNode * node , size _ t level ) ; 
+
+  Declaration: 
+ size _ t getDescendantsSize ( ASTNode * node ) ; 
+
+  Executable: 
+ size _ t getDescendantsSize ( ASTNode * node ) ; 
+
+  Declaration: 
+ std : : vector < ASTNode > getAllFunctions ( ) ; 
+
+  Declaration: 
+ void getAllFunctionsHelper ( ASTNode * root , std : : vector < ASTNode > & functionNodes ) ; 
+
+  Declaration: 
+ ASTNode * _ root ; 
+
+  Executable: 
+ ASTNode * _ root ; 

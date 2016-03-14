@@ -1,0 +1,22 @@
+called
+ -- \n This is an 'example' for you 
+ -- ;
+ -- newline
+ -- \n This is an "example" for you 
+ -- newline
+ -- \n This is an 'example' for you 
+ -- newline
+ -- "abc"
+ -- newline
+ -- \\\\"test"
+ -- newline
+ -- abc
+ -- newline
+ -- \\
+ -- newline
+ -- \\
+ -- newline
+ -- Test "Hello"
+ -- newline
+ -- \\abc
+

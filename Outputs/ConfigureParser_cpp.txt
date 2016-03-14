@@ -1,0 +1,413 @@
+
+  FuncDef: 
+ # include < fstream > 
+
+  FuncDef: 
+ # include "Parser.h" 
+
+  FuncDef: 
+ # include "../SemiExp/SemiExp.h" 
+
+  FuncDef: 
+ # include "../Tokenizer/Tokenizer.h" 
+
+  FuncDef: 
+ # include "ActionsAndRules.h" 
+
+  FuncDef: 
+ # include "ConfigureParser.h" 
+
+  Declaration: 
+ using namespace Scanner ; 
+
+  Executable: 
+ using namespace Scanner ; 
+
+  FuncDef: 
+ ConfigParseToConsole : : ~ ConfigParseToConsole ( ) { 
+
+  Declaration: 
+ delete pHandlePush ; 
+
+  Declaration: 
+ delete pBeginningOfScope ; 
+
+  Declaration: 
+ delete pHandlePop ; 
+
+  Declaration: 
+ delete pEndOfScope ; 
+
+  Declaration: 
+ delete pPrintFunction ; 
+
+  Declaration: 
+ delete pPushFunction ; 
+
+  Declaration: 
+ delete pFunctionDefinition ; 
+
+  Declaration: 
+ delete pDeclaration ; 
+
+  Declaration: 
+ delete pShowDeclaration ; 
+
+  Declaration: 
+ delete pExecutable ; 
+
+  Declaration: 
+ delete pShowExecutable ; 
+
+  Declaration: 
+ delete pRepo ; 
+
+  Declaration: 
+ delete pParser ; 
+
+  Declaration: 
+ delete pSemi ; 
+
+  Declaration: 
+ delete pToker ; 
+
+  Declaration: 
+ pIn - > close ( ) ; 
+
+  Executable: 
+ pIn - > close ( ) ; 
+
+  Declaration: 
+ delete pIn ; 
+
+  Function ConfigParseToConsole, lines = 21 , startLine = 26 , endLine = 46 , complexity = 1
+
+  FuncDef: 
+ bool ConfigParseToConsole : : Attach ( const std : : string & name , bool isFile ) { 
+
+  Declaration: 
+ if ( pToker = = 0 ) return false ; 
+
+  Executable: 
+ if ( pToker = = 0 ) return false ; 
+
+  Executable: 
+ pIn = new std : : ifstream ( name ) ; 
+
+  Declaration: 
+ if ( ! pIn - > good ( ) ) return false ; 
+
+  Executable: 
+ if ( ! pIn - > good ( ) ) return false ; 
+
+  Declaration: 
+ return pToker - > attach ( pIn ) ; 
+
+  Executable: 
+ return pToker - > attach ( pIn ) ; 
+
+  Function Attach, lines = 8 , startLine = 50 , endLine = 57 , complexity = 1
+
+  FuncDef: 
+ void ConfigParseToConsole : : intializeObjects ( ) { 
+
+  Executable: 
+ pToker = new Toker ; 
+
+  Declaration: 
+ pToker - > setComments ( "false" ) ; 
+
+  Executable: 
+ pToker - > setComments ( "false" ) ; 
+
+  Executable: 
+ pSemi = new SemiExp ( pToker ) ; 
+
+  Executable: 
+ pParser = new Parser ( pSemi ) ; 
+
+  Executable: 
+ pRepo = new Repository ( pToker ) ; 
+
+  Function intializeObjects, lines = 7 , startLine = 61 , endLine = 67 , complexity = 1
+
+  FuncDef: 
+ void ConfigParseToConsole : : intializeScopeRules ( ) { 
+
+  Executable: 
+ pBeginningOfScope = new BeginningOfScope ( ) ; 
+
+  Executable: 
+ pHandlePush = new HandlePush ( pRepo ) ; 
+
+  Declaration: 
+ pBeginningOfScope - > addAction ( pHandlePush ) ; 
+
+  Executable: 
+ pBeginningOfScope - > addAction ( pHandlePush ) ; 
+
+  Declaration: 
+ pParser - > addRule ( pBeginningOfScope ) ; 
+
+  Executable: 
+ pParser - > addRule ( pBeginningOfScope ) ; 
+
+  Executable: 
+ pEndOfScope = new EndOfScope ( ) ; 
+
+  Executable: 
+ pHandlePop = new HandlePop ( pRepo ) ; 
+
+  Declaration: 
+ pEndOfScope - > addAction ( pHandlePop ) ; 
+
+  Executable: 
+ pEndOfScope - > addAction ( pHandlePop ) ; 
+
+  Declaration: 
+ pParser - > addRule ( pEndOfScope ) ; 
+
+  Executable: 
+ pParser - > addRule ( pEndOfScope ) ; 
+
+  Executable: 
+ pTypeDefinition = new TypeDefinition ( ) ; 
+
+  Executable: 
+ pPushTypes = new PushTypes ( pRepo ) ; 
+
+  Declaration: 
+ pTypeDefinition - > addAction ( pPushTypes ) ; 
+
+  Executable: 
+ pTypeDefinition - > addAction ( pPushTypes ) ; 
+
+  Declaration: 
+ pParser - > addRule ( pTypeDefinition ) ; 
+
+  Executable: 
+ pParser - > addRule ( pTypeDefinition ) ; 
+
+  Executable: 
+ pFunctionDefinition = new FunctionDefinition ; 
+
+  Executable: 
+ pPushFunction = new PushFunction ( pRepo ) ; 
+
+  Executable: 
+ pPrintFunction = new PrintFunction ( pRepo ) ; 
+
+  Declaration: 
+ pFunctionDefinition - > addAction ( pPushFunction ) ; 
+
+  Executable: 
+ pFunctionDefinition - > addAction ( pPushFunction ) ; 
+
+  Declaration: 
+ pFunctionDefinition - > addAction ( pPrintFunction ) ; 
+
+  Executable: 
+ pFunctionDefinition - > addAction ( pPrintFunction ) ; 
+
+  Declaration: 
+ pParser - > addRule ( pFunctionDefinition ) ; 
+
+  Executable: 
+ pParser - > addRule ( pFunctionDefinition ) ; 
+
+  Executable: 
+ pControlDefinction = new ControlDefinition ( ) ; 
+
+  Executable: 
+ pPushControls = new PushControls ( pRepo ) ; 
+
+  Declaration: 
+ pControlDefinction - > addAction ( pPushControls ) ; 
+
+  Executable: 
+ pControlDefinction - > addAction ( pPushControls ) ; 
+
+  Declaration: 
+ pParser - > addRule ( pControlDefinction ) ; 
+
+  Executable: 
+ pParser - > addRule ( pControlDefinction ) ; 
+
+  Function intializeScopeRules, lines = 30 , startLine = 71 , endLine = 100 , complexity = 1
+
+  FuncDef: 
+ void ConfigParseToConsole : : intializeOtherRules ( ) { 
+
+  Executable: 
+ pDeclaration = new Declaration ; 
+
+  Executable: 
+ pShowDeclaration = new ShowDeclaration ( pRepo ) ; 
+
+  Declaration: 
+ pDeclaration - > addAction ( pShowDeclaration ) ; 
+
+  Executable: 
+ pDeclaration - > addAction ( pShowDeclaration ) ; 
+
+  Declaration: 
+ pParser - > addRule ( pDeclaration ) ; 
+
+  Executable: 
+ pParser - > addRule ( pDeclaration ) ; 
+
+  Executable: 
+ pExecutable = new Executable ; 
+
+  Executable: 
+ pShowExecutable = new ShowExecutable ; 
+
+  Declaration: 
+ pExecutable - > addAction ( pShowExecutable ) ; 
+
+  Executable: 
+ pExecutable - > addAction ( pShowExecutable ) ; 
+
+  Declaration: 
+ pParser - > addRule ( pExecutable ) ; 
+
+  Executable: 
+ pParser - > addRule ( pExecutable ) ; 
+
+  Executable: 
+ pPreproc = new PreprocStatement ; 
+
+  Executable: 
+ pPrintPreproc = new PrintPreproc ; 
+
+  Declaration: 
+ pPreproc - > addAction ( pPrintFunction ) ; 
+
+  Executable: 
+ pPreproc - > addAction ( pPrintFunction ) ; 
+
+  Declaration: 
+ pParser - > addRule ( pPreproc ) ; 
+
+  Executable: 
+ pParser - > addRule ( pPreproc ) ; 
+
+  Function intializeOtherRules, lines = 16 , startLine = 102 , endLine = 117 , complexity = 1
+
+  FuncDef: 
+ Parser * ConfigParseToConsole : : Build ( ) { 
+
+  Executable: 
+ intializeObjects ( ) ; 
+
+  Executable: 
+ intializeScopeRules ( ) ; 
+
+  Executable: 
+ intializeOtherRules ( ) ; 
+
+  Executable: 
+ return pParser ; 
+
+  Declaration: 
+ std : : cout < < "\n\n  " < < ex . what ( ) < < "\n\n" ; 
+
+  Executable: 
+ std : : cout < < "\n\n  " < < ex . what ( ) < < "\n\n" ; 
+
+  Executable: 
+ return 0 ; 
+
+  Function Build, lines = 14 , startLine = 121 , endLine = 134 , complexity = 3
+
+  FuncDef: 
+ # ifdef TEST _ CONFIGUREPARSER 
+
+  FuncDef: 
+ # include < queue > 
+
+  FuncDef: 
+ # include < string > 
+
+  FuncDef: 
+ int main ( int argc , char * argv [ ] ) { 
+
+  Declaration: 
+ std : : cout < < "\n  Testing ConfigureParser module\n " < < std : : string ( 32 , '=' ) < < std : : endl ; 
+
+  Executable: 
+ std : : cout < < "\n  Testing ConfigureParser module\n " < < std : : string ( 32 , '=' ) < < std : : endl ; 
+
+  Declaration: 
+ std : : cout < < "\n  please enter name of file to process on command line\n\n" ; 
+
+  Executable: 
+ std : : cout < < "\n  please enter name of file to process on command line\n\n" ; 
+
+  Executable: 
+ return 1 ; 
+
+  Declaration: 
+ std : : cout < < "\n  Processing file " < < argv [ i ] ; 
+
+  Executable: 
+ std : : cout < < "\n  Processing file " < < argv [ i ] ; 
+
+  Declaration: 
+ std : : cout < < "\n  " < < std : : string ( 16 + strlen ( argv [ i ] ) , '-' ) ; 
+
+  Executable: 
+ std : : cout < < "\n  " < < std : : string ( 16 + strlen ( argv [ i ] ) , '-' ) ; 
+
+  Declaration: 
+ ConfigParseToConsole configure ; 
+
+  Declaration: 
+ Parser * pParser = configure . Build ( ) ; 
+
+  Declaration: 
+ std : : cout < < "\n  could not open file " < < argv [ i ] < < std : : endl ; 
+
+  Executable: 
+ std : : cout < < "\n  could not open file " < < argv [ i ] < < std : : endl ; 
+
+  Executable: 
+ continue ; 
+
+  Declaration: 
+ std : : cout < < "\n\n  Parser not built\n\n" ; 
+
+  Executable: 
+ std : : cout < < "\n\n  Parser not built\n\n" ; 
+
+  Executable: 
+ return 1 ; 
+
+  Declaration: 
+ while ( pParser - > next ( ) ) pParser - > parse ( ) ; 
+
+  Executable: 
+ while ( pParser - > next ( ) ) pParser - > parse ( ) ; 
+
+  Declaration: 
+ std : : cout < < "\n\n" ; 
+
+  Executable: 
+ std : : cout < < "\n\n" ; 
+
+  Declaration: 
+ std : : cout < < "\n\n    " < < ex . what ( ) < < "\n\n" ; 
+
+  Executable: 
+ std : : cout < < "\n\n    " < < ex . what ( ) < < "\n\n" ; 
+
+  Declaration: 
+ std : : cout < < "\n\n" ; 
+
+  Executable: 
+ std : : cout < < "\n\n" ; 
+
+  Function main, lines = 48 , startLine = 142 , endLine = 189 , complexity = 8
+
+  FuncDef: 
+ # endif 

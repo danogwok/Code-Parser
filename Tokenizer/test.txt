@@ -1,0 +1,10 @@
+"\n This is an \'example\' for you ";
+"\n This is an \"example\" for you "
+"\n This is an 'example' for you "
+"\"abc\""
+"\\\\\"test\""
+"abc""
+"\\"
+"\\""
+'Test \"Hello\"'
+"\\abc"

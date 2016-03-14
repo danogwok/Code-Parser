@@ -1,0 +1,3 @@
+﻿  Parser.cpp
+d:\study\ood\fawcett's code\p2helplatest\parser\actionsandrules.h(326): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  Parser.vcxproj -> D:\Study\OOD\Fawcett's Code\P2HelpLatest\x64\Debug\Parser.exe

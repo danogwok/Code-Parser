@@ -1,0 +1,119 @@
+
+  FuncDef: 
+ # include "ActionsAndRules.h" 
+
+  Declaration: 
+ Repository * Repository : : _ instance = nullptr ; 
+
+  Executable: 
+ Repository * Repository : : _ instance = nullptr ; 
+
+  FuncDef: 
+ # ifdef TEST _ ACTIONSANDRULES 
+
+  FuncDef: 
+ # include < iostream > 
+
+  FuncDef: 
+ # include "Tokenizer.h" 
+
+  FuncDef: 
+ # include "SemiExpression.h" 
+
+  FuncDef: 
+ int main ( int argc , char * argv [ ] ) { 
+
+  Declaration: 
+ std : : cout < < "\n  Testing ActionsAndRules class\n " < < std : : string ( 30 , '=' ) < < std : : endl ; 
+
+  Executable: 
+ std : : cout < < "\n  Testing ActionsAndRules class\n " < < std : : string ( 30 , '=' ) < < std : : endl ; 
+
+  Declaration: 
+ std : : queue < std : : string > resultsQ ; 
+
+  Declaration: 
+ PreprocToQ ppq ( resultsQ ) ; 
+
+  Declaration: 
+ PreprocStatement pps ; 
+
+  Declaration: 
+ pps . addAction ( & ppq ) ; 
+
+  Executable: 
+ pps . addAction ( & ppq ) ; 
+
+  Declaration: 
+ FunctionDefinition fnd ; 
+
+  Declaration: 
+ PrettyPrintToQ pprtQ ( resultsQ ) ; 
+
+  Declaration: 
+ fnd . addAction ( & pprtQ ) ; 
+
+  Executable: 
+ fnd . addAction ( & pprtQ ) ; 
+
+  Declaration: 
+ Toker toker ( "../ActionsAndRules.h" ) ; 
+
+  Declaration: 
+ SemiExp se ( & toker ) ; 
+
+  Declaration: 
+ Parser parser ( & se ) ; 
+
+  Declaration: 
+ parser . addRule ( & pps ) ; 
+
+  Executable: 
+ parser . addRule ( & pps ) ; 
+
+  Declaration: 
+ parser . addRule ( & fnd ) ; 
+
+  Executable: 
+ parser . addRule ( & fnd ) ; 
+
+  Declaration: 
+ while ( se . get ( ) ) parser . parse ( ) ; 
+
+  Executable: 
+ while ( se . get ( ) ) parser . parse ( ) ; 
+
+  Declaration: 
+ size _ t len = resultsQ . size ( ) ; 
+
+  Executable: 
+ size _ t len = resultsQ . size ( ) ; 
+
+  Declaration: 
+ std : : cout < < "\n  " < < resultsQ . front ( ) . c _ str ( ) ; 
+
+  Executable: 
+ std : : cout < < "\n  " < < resultsQ . front ( ) . c _ str ( ) ; 
+
+  Declaration: 
+ resultsQ . pop ( ) ; 
+
+  Executable: 
+ resultsQ . pop ( ) ; 
+
+  Declaration: 
+ std : : cout < < "\n\n" ; 
+
+  Executable: 
+ std : : cout < < "\n\n" ; 
+
+  Declaration: 
+ std : : cout < < "\n\n  " < < ex . what ( ) < < "\n\n" ; 
+
+  Executable: 
+ std : : cout < < "\n\n  " < < ex . what ( ) < < "\n\n" ; 
+
+  Function main, lines = 35 , startLine = 22 , endLine = 56 , complexity = 4
+
+  FuncDef: 
+ # endif 

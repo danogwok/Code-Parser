@@ -1,0 +1,17 @@
+
+  FuncDef: 
+ bool isSpecialKeyWord ( const std : : string & tok ) { 
+
+  Declaration: 
+ const static std : : string keys [ ] = { 
+
+  Declaration: 
+ for ( int i = 0 ; i < 5 ; + + i ) if ( tok = = keys [ i ] ) return true ; 
+
+  Executable: 
+ for ( int i = 0 ; i < 5 ; + + i ) if ( tok = = keys [ i ] ) return true ; 
+
+  Executable: 
+ return false ; 
+
+  Function isSpecialKeyWord, lines = 8 , startLine = 2 , endLine = 9 , complexity = 1

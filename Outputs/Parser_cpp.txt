@@ -1,0 +1,207 @@
+
+  FuncDef: 
+ # include < iostream > 
+
+  FuncDef: 
+ # include < string > 
+
+  FuncDef: 
+ # include "../Utilities/Utilities.h" 
+
+  FuncDef: 
+ # include "../Tokenizer/Tokenizer.h" 
+
+  FuncDef: 
+ # include "../SemiExp/SemiExp.h" 
+
+  FuncDef: 
+ # include "Parser.h" 
+
+  FuncDef: 
+ # include "ActionsAndRules.h" 
+
+  FuncDef: 
+ # include "AST.h" 
+
+  FuncDef: 
+ # include "ConfigureParser.h" 
+
+  FuncDef: 
+ # include "../FileMgr/FileSystem.h" 
+
+  FuncDef: 
+ # include "../FileMgr/FileSystem.cpp" 
+
+  Declaration: 
+ using namespace Scanner ; 
+
+  Executable: 
+ using namespace Scanner ; 
+
+  Declaration: 
+ using namespace Utilities ; 
+
+  Executable: 
+ using namespace Utilities ; 
+
+  FuncDef: 
+ void Parser : : addRule ( IRule * pRule ) { 
+
+  Declaration: 
+ rules . push _ back ( pRule ) ; 
+
+  Executable: 
+ rules . push _ back ( pRule ) ; 
+
+  Function addRule, lines = 3 , startLine = 30 , endLine = 32 , complexity = 1
+
+  FuncDef: 
+ bool Parser : : next ( ) { 
+
+  Declaration: 
+ bool succeeded = pTokColl - > get ( ) ; 
+
+  Declaration: 
+ if ( ! succeeded ) return false ; 
+
+  Executable: 
+ if ( ! succeeded ) return false ; 
+
+  Executable: 
+ return true ; 
+
+  Function next, lines = 11 , startLine = 36 , endLine = 46 , complexity = 1
+
+  FuncDef: 
+ bool Parser : : parse ( ) { 
+
+  Declaration: 
+ bool succeeded = false ; 
+
+  Declaration: 
+ if ( rules [ i ] - > doTest ( pTokColl ) ) succeeded = true ; 
+
+  Executable: 
+ if ( rules [ i ] - > doTest ( pTokColl ) ) succeeded = true ; 
+
+  Executable: 
+ return succeeded ; 
+
+  Function parse, lines = 9 , startLine = 51 , endLine = 59 , complexity = 2
+
+  FuncDef: 
+ void IRule : : addAction ( IAction * pAction ) { 
+
+  Declaration: 
+ actions . push _ back ( pAction ) ; 
+
+  Executable: 
+ actions . push _ back ( pAction ) ; 
+
+  Function addAction, lines = 3 , startLine = 63 , endLine = 65 , complexity = 1
+
+  FuncDef: 
+ void IRule : : doActions ( ITokCollection * & pTokColl ) { 
+
+  Declaration: 
+ if ( actions . size ( ) > 0 ) for ( size _ t i = 0 ; i < actions . size ( ) ; + + i ) actions [ i ] - > doAction ( pTokColl ) ; 
+
+  Executable: 
+ if ( actions . size ( ) > 0 ) for ( size _ t i = 0 ; i < actions . size ( ) ; + + i ) actions [ i ] - > doAction ( pTokColl ) ; 
+
+  Function doActions, lines = 5 , startLine = 69 , endLine = 73 , complexity = 1
+
+  FuncDef: 
+ # ifdef xTEST _ PARSER 
+
+  FuncDef: 
+ # include < queue > 
+
+  FuncDef: 
+ # include < string > 
+
+  FuncDef: 
+ # define Util StringHelper 
+
+  FuncDef: 
+ int main ( int argc , char * argv [ ] ) { 
+
+  Declaration: 
+ Util : : Title ( "Testing Parser Class" , '=' ) ; 
+
+  Executable: 
+ putline ( ) ; 
+
+  Declaration: 
+ std : : cout < < "\n  please enter name of file to process on command line\n\n" ; 
+
+  Executable: 
+ std : : cout < < "\n  please enter name of file to process on command line\n\n" ; 
+
+  Executable: 
+ return 1 ; 
+
+  Declaration: 
+ std : : string fileSpec = FileSystem : : Path : : getFullFileSpec ( argv [ i ] ) ; 
+
+  Declaration: 
+ std : : string msg = "Processing file" + fileSpec ; 
+
+  Declaration: 
+ Util : : title ( msg ) ; 
+
+  Executable: 
+ putline ( ) ; 
+
+  Declaration: 
+ ConfigParseToConsole configure ; 
+
+  Declaration: 
+ Parser * pParser = configure . Build ( ) ; 
+
+  Declaration: 
+ std : : cout < < "\n  could not open file " < < fileSpec < < std : : endl ; 
+
+  Executable: 
+ std : : cout < < "\n  could not open file " < < fileSpec < < std : : endl ; 
+
+  Executable: 
+ continue ; 
+
+  Declaration: 
+ std : : cout < < "\n\n  Parser not built\n\n" ; 
+
+  Executable: 
+ std : : cout < < "\n\n  Parser not built\n\n" ; 
+
+  Executable: 
+ return 1 ; 
+
+  Declaration: 
+ while ( pParser - > next ( ) ) pParser - > parse ( ) ; 
+
+  Executable: 
+ while ( pParser - > next ( ) ) pParser - > parse ( ) ; 
+
+  Declaration: 
+ std : : cout < < "\n" ; 
+
+  Executable: 
+ std : : cout < < "\n" ; 
+
+  Declaration: 
+ std : : cout < < "\n\n    " < < ex . what ( ) < < "\n\n" ; 
+
+  Executable: 
+ std : : cout < < "\n\n    " < < ex . what ( ) < < "\n\n" ; 
+
+  Declaration: 
+ std : : cout < < "\n" ; 
+
+  Executable: 
+ std : : cout < < "\n" ; 
+
+  Function main, lines = 48 , startLine = 85 , endLine = 132 , complexity = 8
+
+  FuncDef: 
+ # endif 
